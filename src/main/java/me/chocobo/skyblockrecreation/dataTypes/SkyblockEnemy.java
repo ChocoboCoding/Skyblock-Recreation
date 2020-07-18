@@ -4,7 +4,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Monster;
 
 public class SkyblockEnemy {
-    private Monster;
+    private Monster monster;
     private int level;
     private int hp;
 }
