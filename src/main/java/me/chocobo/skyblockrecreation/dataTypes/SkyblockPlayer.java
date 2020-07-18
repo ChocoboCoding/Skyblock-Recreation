@@ -17,6 +17,16 @@ public class SkyblockPlayer {
         setSpeed(speed);
     }
 
+    public SkyblockPlayer(UUID uuid) {
+        setUuid(uuid);
+        setStrength(20);
+        setCritHit(20);
+        setCritDamage(50);
+        setHp(100);
+        setArmor(0);
+        setSpeed(100);
+    }
+
     public void setUuid(UUID uuid) { this.uuid = uuid; }
 
     public void setStrength(int strength) { this.strength = strength; }
