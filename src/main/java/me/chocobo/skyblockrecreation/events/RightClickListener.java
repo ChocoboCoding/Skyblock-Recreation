@@ -4,6 +4,7 @@ import me.chocobo.skyblockrecreation.utils.InventoryBuilder;
 import me.chocobo.skyblockrecreation.utils.ItemBuilder;
 import me.chocobo.skyblockrecreation.utils.Startup;
 import org.bukkit.Material;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
@@ -11,10 +12,12 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.List;
 
-public class RightClickEvent implements Listener {
-    List<ItemStack> startupItems = Startup.getItems();
+public class RightClickListener implements Listener {
+    List<ItemStack> startupItems = Startup.getUiItems();
+
+    @EventHandler
     public void onRightClick(PlayerInteractEvent event) {
-        if(event.getItem().equals(Startup.getItems().get(0))) {
+        if(event.getItem().equals(Startup.getUiItems().get(0))) {
             event.setCancelled(true);
             Inventory inv = new InventoryBuilder().setSize(9*6).setTitle("SkyBlock Menu").createSize()
                     .fillInventory(new ItemBuilder().setMaterial(Material.STAINED_GLASS_PANE).setDisplayName("").build()).build();

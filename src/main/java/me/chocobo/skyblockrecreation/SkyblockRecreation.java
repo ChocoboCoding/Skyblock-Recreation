@@ -11,8 +11,9 @@ public final class SkyblockRecreation extends JavaPlugin {
         // Plugin startup logic
         loadCommands();
         loadEvents();
-        Startup.startupItems();
-
+        Startup.menuCache();
+        Startup.enemyCache();
+        Startup.weaponCache();
     }
     public void loadCommands() {
         System.out.println("Skyblock>> Succesfully loaded Commands");
