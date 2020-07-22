@@ -7,6 +7,8 @@ import me.chocobo.skyblockrecreation.dataTypes.SkyblockWeapon;
 import me.chocobo.skyblockrecreation.enums.EnemyType;
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
@@ -44,6 +46,26 @@ public class Startup {
     }
     private static void addSkyblockItems(SkyblockItem skyblockItem) {
         skyblockItems.add(skyblockItem);
+    }
+
+    public static Inventory fillSbMenu(Player player, Inventory inv) {
+        List<ItemStack> startupItems = getUiItems();
+
+        inv.setItem(13, new ItemBuilder().setMaterial(Material.SKULL).setDisplayName("§2Your SkyBlock Profile").build());
+        for(int i = 0; i < 7; i++) {
+            inv.setItem(i+19, startupItems.get(i+1));
+        }
+        inv.setItem(31, startupItems.get(9));
+        for(int i = 0; i < 4; i++) {
+            inv.setItem(i+47, startupItems.get(i+12));
+        }
+        return inv;
+    }
+
+    public static Inventory createSbMenu() {
+        Inventory inv = new InventoryBuilder().setSize(9*6).setTitle("SkyBlock Menu").createSize()
+                .fillInventory(new ItemBuilder().setMaterial(Material.STAINED_GLASS_PANE).setDisplayName("").build()).build();
+        return inv;
     }
 
     public static void menuCache() {

@@ -14,6 +14,6 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         event.getPlayer().getInventory().setItem(8, Startup.getUiItems().get(0));
-        Startup.addPlayer(new SkyblockPlayer(event.getPlayer().getUniqueId()));
+        Startup.addSkyblockPlayer(new SkyblockPlayer(event.getPlayer().getUniqueId()));
     }
 }

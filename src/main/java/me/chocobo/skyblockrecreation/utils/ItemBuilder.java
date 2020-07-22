@@ -10,7 +10,7 @@ public class ItemBuilder {
     ItemStack itemStack;
     ItemMeta itemMeta;
     Material material;
-    int amount;
+    int amount = 1;
 
     public ItemBuilder setMaterial(Material material) {
         this.material = material;

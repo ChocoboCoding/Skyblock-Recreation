@@ -27,12 +27,12 @@ public class InventoryBuilder {
         return this;
     }
 
-    public InventoryBuilder createType() {
+    public InventoryBuilder createSize() {
         inv = Bukkit.createInventory(null, size, title);
         return this;
     }
 
-    public InventoryBuilder createSize() {
+    public InventoryBuilder createType() {
         inv = Bukkit.createInventory(null, type, title);
         return this;
     }

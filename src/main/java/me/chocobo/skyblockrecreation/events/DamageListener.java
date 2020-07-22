@@ -14,8 +14,7 @@ public class DamageListener implements Listener {
     public void onEntityDamage(EntityDamageEvent event) {
         if (event.getEntityType().equals(EntityType.PLAYER)){
             Player player = (Player) event.getEntity();
-            SkyblockPlayer sbPlayer = Startup.getPlayers().get(player.getUniqueId());
-            sbPlayer.setCurrentHp();
+            SkyblockPlayer sbPlayer = Startup.getSkyblockPlayers().get(player.getUniqueId());
         }
     }
 }

@@ -8,6 +8,11 @@ public class InventoryClickListener implements Listener {
 
     @EventHandler
     public void onInventoryClick(org.bukkit.event.inventory.InventoryClickEvent event) {
-        if (event.getCurrentItem().equals(Startup.getUiItems().get(1))) event.setCancelled(true);
+        if (event.getInventory().getName().equals("SkyBlock Menu")) {
+            event.setCancelled(true);
+            if (event.getCurrentItem().equals(Startup.getUiItems().get(1))) {
+
+            }
+        }
     }
 }
