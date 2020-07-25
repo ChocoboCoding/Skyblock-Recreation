@@ -1,12 +1,11 @@
 package me.chocobo.skyblockrecreation.utils;
 
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockEnemy;
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockItem;
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockPlayer;
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockWeapon;
+import me.chocobo.skyblockrecreation.dataTypes.*;
 import me.chocobo.skyblockrecreation.enums.EnemyType;
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import org.bukkit.Material;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
@@ -16,9 +15,11 @@ import java.util.*;
 public class Startup {
     private static Map<UUID, SkyblockPlayer> players = new HashMap<>();
     private static List<SkyblockEnemy> enemies = new ArrayList<>();
+    private static Map<UUID, SkyblockEnemy> livingEnemies = new HashMap<>();
     private static List<String> lore = new ArrayList<>();
     private static List<ItemStack> uiItems = new ArrayList<>();
     private static List<SkyblockItem> skyblockItems = new ArrayList<>();
+
 
 
 
@@ -34,6 +35,9 @@ public class Startup {
     public static List<SkyblockItem> getSkyblockItems() {
         return skyblockItems;
     }
+    public static Map<UUID, SkyblockEnemy> getLivingEnemies() {
+        return livingEnemies;
+    }
 
     public static void addSkyblockPlayer(SkyblockPlayer player) {
         players.put(player.getUuid(), player);
@@ -46,6 +50,9 @@ public class Startup {
     }
     private static void addSkyblockItems(SkyblockItem skyblockItem) {
         skyblockItems.add(skyblockItem);
+    }
+    public static void addLivingEnemy(UUID enemy, SkyblockEnemy skyblockEnemy) {
+        livingEnemies.put(enemy, skyblockEnemy);
     }
 
     public static Inventory fillSbMenu(Player player, Inventory inv) {
@@ -94,150 +101,150 @@ public class Startup {
      */
 
     public static void weaponCache() {
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD,"Wooden Sword", new ArrayList<>(), ItemRarity.COMMON,
-                20, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Golden Sword", new ArrayList<>(), ItemRarity.COMMON,
-                20, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Stone Sword", new ArrayList<>(), ItemRarity.COMMON,
-                25, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "IRON Sword", new ArrayList<>(), ItemRarity.COMMON,
-                30, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Diamond Sword", new ArrayList<>(), ItemRarity.UNCOMMON,
-                35, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Aspect of the Jerry", new ArrayList<>(), ItemRarity.COMMON,
-                1, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Fancy Sword", new ArrayList<>(), ItemRarity.COMMON,
-                20, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Rogue Sword", new ArrayList<>(), ItemRarity.COMMON,
-                20, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Spider Sword", new ArrayList<>(), ItemRarity.COMMON,
-                30, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Undead Sword", new ArrayList<>(), ItemRarity.COMMON,
-                30, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "End Sword", new ArrayList<>(), ItemRarity.UNCOMMON,
-                35, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Cleaver", new ArrayList<>(), ItemRarity.UNCOMMON,
-                40, 10, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Flaming Sword", new ArrayList<>(), ItemRarity.UNCOMMON,
-                50, 20, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.PRISMARINE_SHARD, "Prismarine Blade", new ArrayList<>(), ItemRarity.UNCOMMON,
-                50, 25, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Hunter Knife", new ArrayList<>(), ItemRarity.UNCOMMON,
-                50, 0, 0, 0, 0, 0, 40, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Tactician's Sword", new ArrayList<>(), ItemRarity.RARE,
-                50, 20, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.BLAZE_ROD, "Ember Rod", new ArrayList<>(), ItemRarity.EPIC,
-                80, 35, 0, 0, 0, 20, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_HOE, "Frozen Scythe", new ArrayList<>(), ItemRarity.RARE,
-                80, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Golem Sword", new ArrayList<>(), ItemRarity.RARE,
-                80, 125, 0, 0, 0, 0, 0, 25));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_AXE, "Raiders Axe", new ArrayList<>(), ItemRarity.RARE,
-                80, 50, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Revenant Falchion", new ArrayList<>(), ItemRarity.RARE,
-                90, 50, 0, 0, 0, 100, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GHAST_TEAR, "Silver Fang", new ArrayList<>(), ItemRarity.UNCOMMON,
-                100, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Shaman Sword", new ArrayList<>(), ItemRarity.EPIC,
-                100, 20, 0, 0, 0, 0, 5, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the End", new ArrayList<>(), ItemRarity.RARE,
-                100, 100, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Scorpion Foil", new ArrayList<>(), ItemRarity.EPIC,
-                100, 100, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Zombie Sword", new ArrayList<>(), ItemRarity.RARE,
-                100, 50, 0, 0, 0, 50, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Ornate Zombie Sword", new ArrayList<>(), ItemRarity.EPIC,
-                110, 60, 0, 0, 0, 50, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "End Stone Sword", new ArrayList<>(), ItemRarity.EPIC,
-                120, 80, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Recluse Fang", new ArrayList<>(), ItemRarity.RARE,
-                120, 30, 20, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Reaper Falchion", new ArrayList<>(), ItemRarity.EPIC,
-                120, 100, 0, 0, 0, 200, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pooch Sword", new ArrayList<>(), ItemRarity.LEGENDARY,
-                120, 20, 0, 0, 0, 0, 5, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.MUTTON, "Edible Mace", new ArrayList<>(), ItemRarity.RARE,
-                125, 25, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.STICK, "Ink Wand", new ArrayList<>(), ItemRarity.EPIC,
-                130, 90, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.EMERALD, "Emerald Blade", new ArrayList<>(), ItemRarity.EPIC,
-                130, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Midas Sword", new ArrayList<>(), ItemRarity.LEGENDARY,
-                150, 0, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Leaping Sword", new ArrayList<>(), ItemRarity.EPIC,
-                150, 100, 25, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Yeti Sword", new ArrayList<>(), ItemRarity.LEGENDARY,
-                150, 150, 0, 0, 0, 50, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Silk-Edge Sword", new ArrayList<>(), ItemRarity.EPIC,
-                175, 125, 25, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pigman Sword", new ArrayList<>(), ItemRarity.LEGENDARY,
-                200, 100, 30, 5, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the Dragons", new ArrayList<>(), ItemRarity.LEGENDARY,
-                225, 100, 0, 0, 0, 0, 0, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_HOE, "Reaper Scythe", new ArrayList<>(), ItemRarity.LEGENDARY,
-                333, 0, 0, 0, 0, 0, 10, 0));
-        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Adaptive Blade", new ArrayList<>(), ItemRarity.EPIC,
-                170, 0, 0, 0, 0, 0, 0, 0));
+        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD,"Wooden Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Golden Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Stone Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "IRON Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Diamond Sword", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(35)));
+        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Aspect of the Jerry","", ItemRarity.COMMON,
+                new ItemStats().setDamage(1)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Fancy Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Rogue Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Spider Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Undead Sword", "", ItemRarity.COMMON,
+                new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "End Sword", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(35)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Cleaver", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(40).setStrength(10)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Flaming Sword", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(50).setStrength(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.PRISMARINE_SHARD, "Prismarine Blade", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(50).setStrength(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Hunter Knife", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(50).setMovementSpeed(40)));
+        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Tactician's Sword", "", ItemRarity.RARE,
+                new ItemStats().setDamage(50).setStrength(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.BLAZE_ROD, "Ember Rod", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(80).setStrength(35).setIntelligence(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_HOE, "Frozen Scythe", "", ItemRarity.RARE,
+                new ItemStats().setDamage(80)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Golem Sword", "", ItemRarity.RARE,
+                new ItemStats().setDamage(80).setStrength(125).setDefense(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_AXE, "Raiders Axe", "", ItemRarity.RARE,
+                new ItemStats().setDamage(80).setStrength(50)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Revenant Falchion", "", ItemRarity.RARE,
+                new ItemStats().setDamage(90).setStrength(50).setIntelligence(100)));
+        addSkyblockItems(new SkyblockWeapon(Material.GHAST_TEAR, "Silver Fang", "", ItemRarity.UNCOMMON,
+                new ItemStats().setDamage(100)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Shaman Sword", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(100).setStrength(20).setMovementSpeed(5)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the End", "", ItemRarity.RARE,
+                new ItemStats().setDamage(100).setStrength(100)));
+        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Scorpion Foil", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(100).setStrength(100)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Zombie Sword", "", ItemRarity.RARE,
+                new ItemStats().setDamage(100).setStrength(50).setIntelligence(50)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Ornate Zombie Sword", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(110).setStrength(60).setIntelligence(50)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "End Stone Sword", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(120).setStrength(80)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Recluse Fang", "", ItemRarity.RARE,
+                new ItemStats().setDamage(120).setStrength(30).setCritDamage(20)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Reaper Falchion", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(120).setStrength(100).setIntelligence(200)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pooch Sword", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(120).setStrength(20).setMovementSpeed(5)));
+        addSkyblockItems(new SkyblockWeapon(Material.MUTTON, "Edible Mace", "", ItemRarity.RARE,
+                new ItemStats().setDamage(125).setStrength(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.STICK, "Ink Wand", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(130).setStrength(90)));
+        addSkyblockItems(new SkyblockWeapon(Material.EMERALD, "Emerald Blade", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(130)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Midas Sword", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(150)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Leaping Sword", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(150).setStrength(100).setCritDamage(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Yeti Sword", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(150).setStrength(150).setIntelligence(50)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Silk-Edge Sword", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(175).setStrength(125).setCritDamage(25)));
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pigman Sword", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(200).setStrength(100).setCritDamage(30).setCritHit(5)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the Dragons", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(225).setStrength(100)));
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_HOE, "Reaper Scythe", "", ItemRarity.LEGENDARY,
+                new ItemStats().setDamage(333).setMovementSpeed(10)));
+        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Adaptive Blade", "", ItemRarity.EPIC,
+                new ItemStats().setDamage(170)));
     }
 
     public static void enemyCache() {
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_VILLAGER, 1, 120, 24));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE, 1, 100, 20));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, 1, 2000, 475));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_SMALL, 5, 80, 70));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_MEDIUM, 10, 150, 100));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_LARGE, 15, 250, 150));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CREEPER, 3, 120, 80));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.LAPIS_ZOMBIE, 7, 200, 50));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, 6, 200, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_SKELETON, 20, 300, 190));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_SKELETON, 15, 250, 142));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_ZOMBIE, 20, 300, 275));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_ZOMBIE, 15, 250, 200));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, 10, 250, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, 2, 180, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, 4, 220, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, 4, 170, 55));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, 6, 210, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WEAVER_SPIDER, 3, 160, 35));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPIDER_JOCKEY, 3, 220, 55));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.JOCKEY_SKELETON, 3, 250, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, 2, 100, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.VORACIOUS_SPIDER, 10, 1000, 100));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BROOD_MOTHER, 12, 6000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SILVERFISH, 1, 50, 20));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME, 8, 0, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, 12, 500, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, 15, 600, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WITHER_SKELETON, 10, 250, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, 12, 240, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_BOSS, 100, 150000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_SMALL, 3, 200, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_MEDIUM, 6, 250, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_LARGE, 9, 300, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GHAST, 17, 330, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WOLF, 15, 250, 90));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_WOLF, 55, 15000, 800));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_SMALL, 42, 4500, 500));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_MEDIUM, 45, 6000, 600));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_LARGE, 50, 9000, 700));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZEALOT, 55, 13000, 1250));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CHEST_ZEALOT,55, 13000, 1250));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPECIAL_ZEALOT, 55, 2000, 1250));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WATCHER, 55, 9500, 475));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OBSIDIAN_DEFENDER, 55, 10000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, 40, 2000, 475));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDSTONE_PROTECTOR, 0, 5000000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DRAGON, 0, 7500000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_DRAGON, 0, 12000000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.YOUNG_DRAGON, 0, 6000000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SUPERIOR_DRAGON, 0, 10000000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CRYPT_GHOUL, 30, 2000, 350));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GOLDEN_GHOUL, 50, 45000, 800));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.PACK_SPIRIT, 30, 6000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HOWLING_SPIRIT, 35, 7000, 500));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SOUL_OF_THE_ALPHA, 55, 31150, 1150));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HEADLESS_HORSEMAN, 100, 3000000, 0));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_VILLAGER, new EnemyStats().setLevel(1).setDamage(20).setMaxHp(5)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE, new EnemyStats().setLevel(1).setMaxHp(100).setDamage(20)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, new EnemyStats().setLevel(1).setMaxHp(2000).setDamage(475)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_SMALL, new EnemyStats().setLevel(5).setMaxHp(80).setDamage(70)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_MEDIUM, new EnemyStats().setLevel(10).setMaxHp(150).setDamage(100)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_LARGE, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(150)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CREEPER, new EnemyStats().setLevel(3).setMaxHp(120).setDamage(80)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.LAPIS_ZOMBIE, new EnemyStats().setLevel(7).setMaxHp(200).setDamage(50)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, new EnemyStats().setLevel(6).setMaxHp(200).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_SKELETON, new EnemyStats().setLevel(20).setMaxHp(300).setDamage(190)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_SKELETON, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(142)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_ZOMBIE, new EnemyStats().setLevel(20).setMaxHp(300).setDamage(275)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_ZOMBIE, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(200)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, new EnemyStats().setLevel(10).setMaxHp(250).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, new EnemyStats().setLevel(2).setMaxHp(180).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, new EnemyStats().setLevel(4).setMaxHp(220).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, new EnemyStats().setLevel(4).setMaxHp(170).setDamage(55)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, new EnemyStats().setLevel(6).setMaxHp(210).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WEAVER_SPIDER, new EnemyStats().setLevel(3).setMaxHp(160).setDamage(35)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPIDER_JOCKEY, 3, 220, 55));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.JOCKEY_SKELETON, new EnemyStats().setLevel(3).setMaxHp(250).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, new EnemyStats().setLevel(2).setMaxHp(100).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.VORACIOUS_SPIDER, new EnemyStats().setLevel(10).setMaxHp(1000).setDamage(100)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.BROOD_MOTHER, 12, 6000, 0));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SILVERFISH, new EnemyStats().setLevel(1).setMaxHp(50).setDamage(20)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME, new EnemyStats().setLevel(8).setMaxHp(0).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, new EnemyStats().setLevel(12).setMaxHp(500).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, new EnemyStats().setLevel(15).setMaxHp(600).setDamage(9)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.WITHER_SKELETON, new EnemyStats().setLevel(10).setMaxHp(250).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, new EnemyStats().setLevel(12).setMaxHp(240).setDamage(0)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_BOSS, 100, 150000, 0));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_SMALL, new EnemyStats().setLevel(3).setMaxHp(200).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_MEDIUM, new EnemyStats().setLevel(6).setMaxHp(250).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_LARGE, new EnemyStats().setLevel(9).setMaxHp(300).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GHAST, new EnemyStats().setLevel(17).setMaxHp(330).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WOLF, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(90)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_WOLF, new EnemyStats().setLevel(55).setMaxHp(15000).setDamage(800)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_SMALL, new EnemyStats().setLevel(55).setMaxHp(1500).setDamage(800)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_MEDIUM, new EnemyStats().setLevel(45).setMaxHp(6000).setDamage(600)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_LARGE, new EnemyStats().setLevel(50).setMaxHp(9000).setDamage(700)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZEALOT, new EnemyStats().setLevel(55).setMaxHp(13000).setDamage(1250)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CHEST_ZEALOT,new EnemyStats().setLevel(55).setMaxHp(13000).setDamage(1250)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPECIAL_ZEALOT, new EnemyStats().setLevel(55).setMaxHp(2000).setDamage(1250)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WATCHER, new EnemyStats().setLevel(55).setMaxHp(9500).setDamage(475)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OBSIDIAN_DEFENDER, new EnemyStats().setLevel(55).setMaxHp(10000).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, new EnemyStats().setLevel(40).setMaxHp(2000).setDamage(475)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDSTONE_PROTECTOR, 0, 5000000, 0));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.DRAGON, 0, 7500000, 0));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_DRAGON, 0, 12000000, 0));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.YOUNG_DRAGON, 0, 6000000, 0));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.SUPERIOR_DRAGON, 0, 10000000, 0));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CRYPT_GHOUL, new EnemyStats().setLevel(30).setMaxHp(2000).setDamage(350)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GOLDEN_GHOUL, new EnemyStats().setLevel(50).setMaxHp(45000).setDamage(800)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.PACK_SPIRIT, new EnemyStats().setLevel(30).setMaxHp(6000).setDamage(0)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HOWLING_SPIRIT, new EnemyStats().setLevel(35).setMaxHp(7000).setDamage(500)));
+        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SOUL_OF_THE_ALPHA, new EnemyStats().setLevel(55).setMaxHp(31150).setDamage(1150)));
+        //addSkyblockEnemy(new SkyblockEnemy(EnemyType.HEADLESS_HORSEMAN, 100, 3000000, 0));
 
 
     }
@@ -427,7 +434,7 @@ public class Startup {
     }
 
     private static void settings() {
-        lore.add("§7View and edit your SkyBlock");
+        lore.add("§7View and edit your SkyBlock//§eClick to view!// //§eClick to view!//");
         lore.add("§7settings.");
         lore.add("");
         lore.add("§eClick to view!");

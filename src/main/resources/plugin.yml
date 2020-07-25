@@ -1,3 +1,13 @@
 name: SkyblockRecreation
 version: ${project.version}
 main: me.chocobo.skyblockrecreation.SkyblockRecreation
+
+commands:
+  giveitem:
+    description: Gives you the requested Item
+    aliases: [givei, gitem]
+    usage: "Usage: /giveitem [id]"
+  spawnenemy:
+    decription: Spawns the enemy you requested
+    aliases: spawn
+    usage: "Usage: /spawnenemy [id]"

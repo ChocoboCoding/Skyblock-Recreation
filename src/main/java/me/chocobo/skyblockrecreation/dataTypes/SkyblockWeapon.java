@@ -2,42 +2,25 @@ package me.chocobo.skyblockrecreation.dataTypes;
 
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import me.chocobo.skyblockrecreation.enums.ItemType;
+import me.chocobo.skyblockrecreation.enums.Rune;
 import org.bukkit.Material;
 
 import java.util.List;
 
 public class SkyblockWeapon extends SkyblockItem {
 
+    private Rune rune;
 
-
-    public SkyblockWeapon(Material material, String name, List<String> lore, ItemRarity rarity, int damage, int strength,
-                          int critDamage, int critHit, int attackSpeed, int intelligence, int movementSpeed, int defense) {
+    public SkyblockWeapon(Material material, String name, String lore, ItemRarity rarity, ItemStats itemStats) {
         setMaterial(material);
         setName(name);
         setLore(lore);
-        setType(ItemType.WEAPON);
+        setType(ItemType.MELEE);
         setRarity(rarity);
-        setDamage(damage);
-        setStrength(strength);
-        setCritDamage(critDamage);
-        setCritHit(critHit);
-        setAttackSpeed(attackSpeed);
-        setIntelligence(intelligence);
-        setMovementSpeed(movementSpeed);
-        setDefense(defense);
+        setItemStats(itemStats);
     }
 
-    public Material getMaterial() {
-        return material;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public void setMaterial(Material material) {
-        this.material = material;
-    }
-    public void setName(String name) {
-        this.name = name;
+    public Rune getRune() {
+        return rune;
     }
 }

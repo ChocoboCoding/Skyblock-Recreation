@@ -1,145 +1,263 @@
 package me.chocobo.skyblockrecreation.dataTypes;
 
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import javax.swing.plaf.IconUIResource;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
-
-public class SkyblockPlayer {
+public class SkyblockPlayer extends SkyblockEntity {
     private UUID uuid;
-    private int strength, critHit, critDamage, maxHp, armor, speed, intelligence, attackSpeed, seaCreatureChance,
-            magicFind, petLuck, currentHp;
+    private SkyblockInventory inventory;
+    private PlayerStats playerStats;
 
-    public SkyblockPlayer(UUID uuid, int strength, int critHit, int critDamage, int hp, int armor, int speed,
-                          int intelligence, int attackSpeed, int seaCreatureChance, int magicFind, int petLuck) {
-        setUuid(uuid);
-        setStrength(strength);
-        setCritHit(critHit);
-        setCritDamage(critDamage);
-        setMaxHp(hp);
-        setArmor(armor);
-        setSpeed(speed);
-        setIntelligence(intelligence);
-        setAttackSpeed(attackSpeed);
-        setSeaCreatureChance(seaCreatureChance);
-        setMagicFind(magicFind);
-        setPetLuck(petLuck);
+    public SkyblockPlayer(UUID uuid, PlayerStats playerStats, SkyblockInventory inventory) {
+        this.playerStats = playerStats;
+        this.inventory = inventory;
     }
 
     public SkyblockPlayer(UUID uuid) {
         setUuid(uuid);
-        setStrength(20);
-        setCritHit(20);
-        setCritDamage(50);
-        setMaxHp(1000);
-        setArmor(0);
-        setSpeed(100);
-        setIntelligence(100);
-        setAttackSpeed(0);
-        setSeaCreatureChance(0);
-        setMagicFind(0);
-        setPetLuck(0);
-    }
+        playerStats.setStrength(20).setCritHit(20).setCritDamage(50).setMaxHealth(1000).setMovementSpeed(100).setIntelligence(100).
+                setAttackSpeed(100);
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public void setCritHit(int critHit) {
-        this.critHit = critHit;
-    }
-
-    public void setCritDamage(int critDamage) {
-        this.critDamage = critDamage;
-    }
-
-    public void setMaxHp(int maxHp) {
-        this.maxHp = maxHp;
-    }
-
-    public void setArmor(int armor) {
-        this.armor = armor;
-    }
-
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public void setAttackSpeed(int attackSpeed) {
-        this.attackSpeed = attackSpeed;
-    }
-
-    public void setSeaCreatureChance(int seaCreatureChance) {
-        this.seaCreatureChance = seaCreatureChance;
-    }
-
-    public void setMagicFind(int magicFind) {
-        this.magicFind = magicFind;
-    }
-
-    public void setPetLuck(int petLuck) {
-        this.petLuck = petLuck;
     }
 
     public UUID getUuid() {
         return uuid;
     }
-
+    public PlayerStats getStats() {
+        return playerStats;
+    }
+    public SkyblockInventory getInventory() {
+        return inventory;
+    }
+    public Map<Integer, Integer> map = new HashMap<>();
     public int getStrength() {
-        return strength;
+        return playerStats.getStrength();
     }
-
-    public int getCritHit() {
-        return critHit;
-    }
-
     public int getCritDamage() {
-        return critDamage;
+        return playerStats.getCritDamage();
     }
-
-    public int getMaxHp() {
-        return maxHp;
+    public int getCritHit() {
+        return playerStats.getCritHit();
     }
-
-    public int getArmor() {
-        return armor;
-    }
-
-    public int getSpeed() {
-        return speed;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
     public int getAttackSpeed() {
-        return attackSpeed;
+        return playerStats.getAttackSpeed();
     }
-
+    public int getIntelligence() {
+        return playerStats.getIntelligence();
+    }
+    public int getMana() {
+        return playerStats.getMana();
+    }
+    public int getMovementSpeed() {
+        return playerStats.getMovementSpeed();
+    }
+    public int getDefense() {
+        return playerStats.getDefense();
+    }
     public int getSeaCreatureChance() {
-        return seaCreatureChance;
+        return playerStats.getSeaCreatureChance();
     }
-
     public int getMagicFind() {
-        return magicFind;
+        return playerStats.getMagicFind();
     }
-
     public int getPetLuck() {
-        return petLuck;
+        return playerStats.getPetLuck();
     }
 
-    public void setCurrentHp(int currentHp) {
-        this.currentHp = currentHp;
+    public SkyblockPlayer setUuid(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
+    public SkyblockPlayer setPlayerStats(PlayerStats playerStats) {
+        this.playerStats = playerStats;
+        return this;
+    }
+    public SkyblockPlayer setInventory(SkyblockInventory inventory) {
+        this.inventory = inventory;
+        return this;
+    }
+    public SkyblockPlayer setStrength(int strength) {
+        playerStats.setStrength(strength);
+        return this;
+    }
+    public SkyblockPlayer addStrength(int strength) {
+        setStrength(getStrength() + strength);
+        return this;
+    }
+    public SkyblockPlayer removeStrength(int strength) {
+        setStrength(getStrength() - strength);
+        return this;
+    }
+    public SkyblockPlayer setCritDamage(int critDamage) {
+        playerStats.setCritDamage(critDamage);
+        return this;
+    }
+    public SkyblockPlayer addCritDamage(int critDamage) {
+        setCritDamage(getCritDamage() + critDamage);
+        return this;
+    }
+    public SkyblockPlayer removeCritDamage(int critDamage) {
+        setCritDamage(getCritDamage() - critDamage);
+        return this;
+    }
+    public SkyblockPlayer setCritHit(int critHit) {
+        playerStats.setCritHit(critHit);
+        return this;
+    }
+    public SkyblockPlayer addCritHit(int critHit) {
+        setCritHit(getCritHit() + critHit);
+        return this;
+    }
+    public SkyblockPlayer removeCritHit(int critHit) {
+        setCritHit(getCritHit() - critHit);
+        return this;
+    }
+    public SkyblockPlayer setAttackSpeed(int attackSpeed) {
+        playerStats.setAttackSpeed(attackSpeed);
+        return this;
+    }
+    public SkyblockPlayer addAttackSpeed(int attackSpeed) {
+        setAttackSpeed(getAttackSpeed() + attackSpeed);
+        return this;
+    }
+    public SkyblockPlayer removeAttackSpeed(int attackSpeed) {
+        setAttackSpeed(getAttackSpeed() - attackSpeed);
+        return this;
+    }
+    public SkyblockPlayer setIntelligence(int intelligence) {
+        playerStats.setIntelligence(intelligence);
+        return this;
+    }
+    public SkyblockPlayer addIntelligence(int intelligence) {
+        setIntelligence(getIntelligence() + intelligence);
+        return this;
+    }
+    public SkyblockPlayer removeIntelligence(int intelligence) {
+        setIntelligence(getIntelligence() - intelligence);
+        return this;
+    }
+    public SkyblockPlayer setMana(int mana) {
+        playerStats.setMana(mana);
+        return this;
+    }
+    public SkyblockPlayer addMana(int mana) {
+        playerStats.setMana(playerStats.getMana() + mana);
+        return this;
+    }
+    public SkyblockPlayer removeMana(int mana) {
+        setMana(getMana() - mana);
+        return this;
+    }
+    public SkyblockPlayer setMovementSpeed(int movementSpeed) {
+        playerStats.setMovementSpeed(movementSpeed);
+        return this;
+    }
+    public SkyblockPlayer addMovementSpeed(int movementSpeed) {
+        setMovementSpeed(getMovementSpeed() + movementSpeed);
+        return this;
+    }
+    public SkyblockPlayer removeMovementSpeed(int movementSpeed) {
+        setMovementSpeed(getMovementSpeed() - movementSpeed);
+        return this;
+    }
+    public SkyblockPlayer setDefense(int defense) {
+        playerStats.setDefense(defense);
+        playerStats.setDamageReduction(defense/(defense+100));
+        return this;
+    }
+    public SkyblockPlayer addDefense(int defense) {
+        setDefense(getDefense() + defense);
+        return this;
+    }
+    public SkyblockPlayer removeDefense(int defense) {
+        setDefense(getDefense() - defense);
+        return this;
+    }
+    public SkyblockPlayer setSeaCreatureChance(int seaCreatureChance) {
+        playerStats.setSeaCreatureChance(seaCreatureChance);
+        return this;
+    }
+    public SkyblockPlayer addSeaCreatureChance(int seaCreatureChance) {
+        setSeaCreatureChance(getSeaCreatureChance() + seaCreatureChance);
+        return this;
+    }
+    public SkyblockPlayer removeSeaCreatureChance(int seaCreatureChance) {
+        setSeaCreatureChance(getSeaCreatureChance() - seaCreatureChance);
+        return this;
+    }
+    public SkyblockPlayer setMagicFind(int magicFind) {
+        playerStats.setMagicFind(magicFind);
+        return this;
+    }
+    public SkyblockPlayer addMagicFind(int magicFind) {
+        setMagicFind(getMagicFind() + magicFind);
+        return this;
+    }
+    public SkyblockPlayer removeMagicFind(int magicFind) {
+        setMagicFind(getMagicFind() - magicFind);
+        return this;
+    }
+    public SkyblockPlayer setPetLuck(int petLuck) {
+        playerStats.setPetLuck(petLuck);
+        return this;
+    }
+    public SkyblockPlayer addPetLuck(int petLuck) {
+        setPetLuck(getPetLuck() + petLuck);
+        return this;
+    }
+    public SkyblockPlayer removePetLuck(int petLuck) {
+        setPetLuck(getPetLuck() - petLuck);
+        return this;
+    }
+    public SkyblockPlayer addCurrentHealth(int health) {
+        setCurrentHealth(getCurrentHealth() + health);
+        return this;
+    }
+    public SkyblockPlayer removeCurrentHealth(int health) {
+        setCurrentHealth(getCurrentHealth() - health);
+        return this;
     }
 
-    public int getCurrentHp() {
-        return currentHp;
+    public SkyblockPlayer giveItem(SkyblockItem item) {
+        inventory.addSkyblockItem(item);
+        return this;
+    }
+
+    public SkyblockPlayer damage(SkyblockPlayer damager) {
+        int damage = (5 + damager.getItemInHand().getItemStats().getDamage() + (damager.getStats().getStrength()/5) * (1 + damager.getStats().getStrength() / 100));
+        damage = damage - (int) Math.round(damage * getStats().getDamageReduction());
+        setCurrentHealth(getStats().getCurrentHealth() - damage);
+        return this;
+    }
+
+    public SkyblockPlayer damage(SkyblockEnemy damager) {
+        int damage = damager.getDamage();
+        damage = damage - (int) Math.round(damage * getStats().getDamageReduction());
+        setCurrentHealth(getStats().getCurrentHealth()-damage);
+        return this;
+    }
+
+    public SkyblockPlayer damage(int damage) {
+        setCurrentHealth(getStats().getCurrentHealth()-damage);
+        return this;
+    }
+
+    public SkyblockItem getItemInHand() {
+        SkyblockPlayer skyblockPlayer = this;
+        Player player = Bukkit.getPlayer(skyblockPlayer.getUuid());
+        SkyblockItem item = new SkyblockItem();
+        for (int i = 0; i < 9; i++) {
+            if (player.getInventory().getItem(i) == player.getItemInHand()) {
+                item = skyblockPlayer.getInventory().getItem(i);
+                break;
+            }
+
+        }
+        return item;
     }
 }

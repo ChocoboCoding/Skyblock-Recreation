@@ -1,56 +1,66 @@
 package me.chocobo.skyblockrecreation.enums;
 
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.Villager;
+
 public enum EnemyType {
-    ZOMBIE,
-    ZOMBIE_VILLAGER,
-    LAPIS_ZOMBIE,
-    DIAMOND_ZOMBIE,
-    HARDENED_DIAMOND_ZOMBIE,
-    CRYPT_GHOUL,
-    GOLDEN_GHOUL,
-    ZOMBIE_PIGMAN,
-    SKELETON,
-    DIAMOND_SKELETON,
-    HARDENED_DIAMOND_SKELETON,
-    JOCKEY_SKELETON,
-    WITHER_SKELETON,
-    SPLITTER_SPIDER,
-    DASHER_SPIDER,
-    WEAVER_SPIDER,
-    SPIDER_JOCKEY,
-    VORACIOUS_SPIDER,
-    BROOD_MOTHER,
-    SILVERFISH,
-    ENDERMITE,
-    WITCH,
-    CREEPER,
-    BLAZE,
-    SLIME,
-    SLIME_SMALL,
-    SLIME_MEDIUM,
-    SLIME_LARGE,
-    CUBE_SMALL,
-    CUBE_MEDIUM,
-    CUBE_LARGE,
-    CUBE_BOSS,
-    GHAST,
-    WOLF,
-    OLD_WOLF,
-    PACK_SPIRIT,
-    HOWLING_SPIRIT,
-    SOUL_OF_THE_ALPHA,
-    ENDERMAN_SMALL,
-    ENDERMAN_MEDIUM,
-    ENDERMAN_LARGE,
-    ZEALOT,
-    CHEST_ZEALOT,
-    SPECIAL_ZEALOT,
-    WATCHER,
-    OBSIDIAN_DEFENDER,
-    ENDSTONE_PROTECTOR,
-    DRAGON,
-    OLD_DRAGON,
-    YOUNG_DRAGON,
-    SUPERIOR_DRAGON,
-    HEADLESS_HORSEMAN
+    ZOMBIE("", EntityType.ZOMBIE),
+    //ZOMBIE_VILLAGER("", EntityType.VILLAGER),
+    LAPIS_ZOMBIE("", EntityType.ZOMBIE),
+    DIAMOND_ZOMBIE("", EntityType.ZOMBIE),
+    HARDENED_DIAMOND_ZOMBIE("", EntityType.ZOMBIE),
+    CRYPT_GHOUL("", EntityType.ZOMBIE),
+    GOLDEN_GHOUL("", EntityType.ZOMBIE),
+    ZOMBIE_PIGMAN("", EntityType.PIG_ZOMBIE),
+    SKELETON("", EntityType.SKELETON),
+    DIAMOND_SKELETON("", EntityType.SKELETON),
+    HARDENED_DIAMOND_SKELETON("", EntityType.SKELETON),
+    JOCKEY_SKELETON("", EntityType.SKELETON),
+    //WITHER_SKELETON("", EntityType.WITHER_SKELETON),
+    SPLITTER_SPIDER("", EntityType.SPIDER),
+    DASHER_SPIDER("", EntityType.SPIDER),
+    WEAVER_SPIDER("", EntityType.SPIDER),
+    JOCKER_SPIDER("", EntityType.SPIDER),
+    VORACIOUS_SPIDER("", EntityType.SPIDER),
+    SILVERFISH("", EntityType.SILVERFISH),
+    ENDERMITE("", EntityType.ENDERMITE),
+    WITCH("", EntityType.WITCH),
+    CREEPER("", EntityType.CREEPER),
+    BLAZE("", EntityType.BLAZE),
+    SLIME("", EntityType.SLIME),
+    SLIME_SMALL("", EntityType.SLIME),
+    SLIME_MEDIUM("", EntityType.SLIME),
+    SLIME_LARGE("", EntityType.SLIME),
+    CUBE_SMALL("", EntityType.MAGMA_CUBE),
+    CUBE_MEDIUM("", EntityType.MAGMA_CUBE),
+    CUBE_LARGE("", EntityType.MAGMA_CUBE),
+    GHAST("", EntityType.GHAST),
+    WOLF("", EntityType.WOLF),
+    OLD_WOLF("", EntityType.WOLF),
+    PACK_SPIRIT("", EntityType.WOLF),
+    HOWLING_SPIRIT("", EntityType.WOLF),
+    SOUL_OF_THE_ALPHA("", EntityType.WOLF),
+    ENDERMAN_SMALL("", EntityType.ENDERMAN),
+    ENDERMAN_MEDIUM("", EntityType.ENDERMAN),
+    ENDERMAN_LARGE("", EntityType.ENDERMAN),
+    ZEALOT("", EntityType.ENDERMAN),
+    CHEST_ZEALOT("", EntityType.ENDERMAN),
+    SPECIAL_ZEALOT("", EntityType.ENDERMAN),
+    WATCHER("", EntityType.SKELETON),
+    OBSIDIAN_DEFENDER("", EntityType.SKELETON);
+
+    private final String name;
+    private final EntityType type;
+
+    private EnemyType(String name, EntityType type) {
+        this.name = name;
+        this.type = type;
+    }
+
+    public EntityType getType() {
+        return type;
+    }
+    public String getName() {
+        return name;
+    }
 }
