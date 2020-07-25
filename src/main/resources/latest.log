@@ -1,0 +1,209 @@
+[02:16:26] [Server thread/INFO]: Starting minecraft server version 1.8.8
+[02:16:26] [Server thread/INFO]: Loading properties
+[02:16:27] [Server thread/INFO]: Default game type: SURVIVAL
+[02:16:27] [Server thread/INFO]: This server is running CraftBukkit version git-Spigot-db6de12-18fbb24 (MC: 1.8.8) (Implementing API version 1.8.8-R0.1-SNAPSHOT)
+[02:16:28] [Server thread/INFO]: Server Ping Player Sample Count: 12
+[02:16:28] [Server thread/INFO]: Using 4 threads for Netty based IO
+[02:16:28] [Server thread/INFO]: Debug logging is disabled
+[02:16:28] [Server thread/INFO]: Generating keypair
+[02:16:29] [Server thread/INFO]: Starting Minecraft server on *:25565
+[02:16:29] [Server thread/INFO]: Using default channel type
+[02:16:29] [Server thread/INFO]: Your platform does not provide complete low-level API for accessing direct buffers reliably. Unless explicitly requested, heap buffer will always be preferred to avoid potential system unstability.
+[02:16:30] [Server thread/INFO]: Set PluginClassLoader as parallel capable
+[02:16:30] [Server thread/INFO]: [SkyblockRecreation] Loading SkyblockRecreation v1.0-SNAPSHOT
+[02:16:30] [Server thread/INFO]: **** Beginning UUID conversion, this may take A LONG time ****
+[02:16:30] [Server thread/INFO]: Preparing level "world"
+[02:16:31] [Server thread/INFO]: -------- World Settings For [world] --------
+[02:16:31] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[02:16:31] [Server thread/INFO]: Item Merge Radius: 2.5
+[02:16:31] [Server thread/INFO]: Item Despawn Rate: 6000
+[02:16:31] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[02:16:31] [Server thread/INFO]: Anti X-Ray: true
+[02:16:31] [Server thread/INFO]: 	Engine Mode: 1
+[02:16:31] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[02:16:31] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[02:16:31] [Server thread/INFO]: Mob Spawn Range: 4
+[02:16:31] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Cane Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Melon Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[02:16:31] [Server thread/INFO]: Max TNT Explosions: 100
+[02:16:31] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[02:16:31] [Server thread/INFO]: Structure Info Saving: true
+[02:16:31] [Server thread/INFO]: Max Entity Collisions: 8
+[02:16:31] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[02:16:31] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[02:16:31] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[02:16:31] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[02:16:31] [Server thread/INFO]: Random Lighting Updates: false
+[02:16:31] [Server thread/INFO]: Sending up to 10 chunks per packet
+[02:16:31] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[02:16:31] [Server thread/INFO]: Clear tick list: false
+[02:16:31] [Server thread/INFO]: Experience Merge Radius: 3.0
+[02:16:31] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[02:16:31] [Server thread/INFO]: View Distance: 10
+[02:16:31] [Server thread/INFO]: -------- World Settings For [world_nether] --------
+[02:16:31] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[02:16:31] [Server thread/INFO]: Item Merge Radius: 2.5
+[02:16:31] [Server thread/INFO]: Item Despawn Rate: 6000
+[02:16:31] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[02:16:31] [Server thread/INFO]: Anti X-Ray: true
+[02:16:31] [Server thread/INFO]: 	Engine Mode: 1
+[02:16:31] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[02:16:31] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[02:16:31] [Server thread/INFO]: Mob Spawn Range: 4
+[02:16:31] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Cane Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Melon Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[02:16:31] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[02:16:31] [Server thread/INFO]: Max TNT Explosions: 100
+[02:16:31] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[02:16:31] [Server thread/INFO]: Structure Info Saving: true
+[02:16:31] [Server thread/INFO]: Max Entity Collisions: 8
+[02:16:31] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[02:16:31] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[02:16:31] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[02:16:32] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[02:16:32] [Server thread/INFO]: Random Lighting Updates: false
+[02:16:32] [Server thread/INFO]: Sending up to 10 chunks per packet
+[02:16:32] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[02:16:32] [Server thread/INFO]: Clear tick list: false
+[02:16:32] [Server thread/INFO]: Experience Merge Radius: 3.0
+[02:16:32] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[02:16:32] [Server thread/INFO]: View Distance: 10
+[02:16:32] [Server thread/INFO]: -------- World Settings For [world_the_end] --------
+[02:16:32] [Server thread/INFO]: Arrow Despawn Rate: 1200
+[02:16:32] [Server thread/INFO]: Item Merge Radius: 2.5
+[02:16:32] [Server thread/INFO]: Item Despawn Rate: 6000
+[02:16:32] [Server thread/INFO]: Allow Zombie Pigmen to spawn from portal blocks: true
+[02:16:32] [Server thread/INFO]: Anti X-Ray: true
+[02:16:32] [Server thread/INFO]: 	Engine Mode: 1
+[02:16:32] [Server thread/INFO]: 	Hidden Blocks: [14, 15, 16, 21, 48, 49, 54, 56, 73, 74, 82, 129, 130]
+[02:16:32] [Server thread/INFO]: 	Replace Blocks: [1, 5]
+[02:16:32] [Server thread/INFO]: Mob Spawn Range: 4
+[02:16:32] [Server thread/INFO]: Cactus Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Cane Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Melon Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Mushroom Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Pumpkin Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Sapling Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Wheat Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: NetherWart Growth Modifier: 100%
+[02:16:32] [Server thread/INFO]: Nerfing mobs spawned from spawners: false
+[02:16:32] [Server thread/INFO]: Max TNT Explosions: 100
+[02:16:32] [Server thread/INFO]: Entity Tracking Range: Pl 48 / An 48 / Mo 48 / Mi 32 / Other 64
+[02:16:32] [Server thread/INFO]: Structure Info Saving: true
+[02:16:32] [Server thread/INFO]: Max Entity Collisions: 8
+[02:16:32] [Server thread/INFO]: Tile Max Tick Time: 50ms Entity max Tick Time: 50ms
+[02:16:32] [Server thread/INFO]: Entity Activation Range: An 32 / Mo 32 / Mi 16
+[02:16:32] [Server thread/INFO]: Hopper Transfer: 8 Hopper Check: 8 Hopper Amount: 1
+[02:16:32] [Server thread/INFO]: Custom Map Seeds:  Village: 10387312 Feature: 14357617
+[02:16:32] [Server thread/INFO]: Random Lighting Updates: false
+[02:16:32] [Server thread/INFO]: Sending up to 10 chunks per packet
+[02:16:32] [Server thread/INFO]: Chunks to Grow per Tick: 650
+[02:16:32] [Server thread/INFO]: Clear tick list: false
+[02:16:32] [Server thread/INFO]: Experience Merge Radius: 3.0
+[02:16:32] [Server thread/INFO]: Zombie Aggressive Towards Villager: true
+[02:16:32] [Server thread/INFO]: View Distance: 10
+[02:16:32] [Server thread/INFO]: Preparing start region for level 0 (Seed: 7326359117791590859)
+[02:16:34] [Server thread/INFO]: Preparing spawn area: 0%
+[02:16:35] [Server thread/INFO]: Preparing spawn area: 5%
+[02:16:36] [Server thread/INFO]: Preparing spawn area: 12%
+[02:16:37] [Server thread/INFO]: Preparing spawn area: 24%
+[02:16:38] [Server thread/INFO]: Preparing spawn area: 45%
+[02:16:39] [Server thread/INFO]: Preparing spawn area: 70%
+[02:16:40] [Server thread/INFO]: Preparing spawn area: 88%
+[02:16:40] [Server thread/INFO]: Preparing start region for level 1 (Seed: 7326359117791590859)
+[02:16:41] [Server thread/INFO]: Preparing spawn area: 36%
+[02:16:42] [Server thread/INFO]: Preparing spawn area: 64%
+[02:16:43] [Server thread/INFO]: Preparing start region for level 2 (Seed: 7326359117791590859)
+[02:16:44] [Server thread/INFO]: Preparing spawn area: 57%
+[02:16:44] [Server thread/INFO]: [SkyblockRecreation] Enabling SkyblockRecreation v1.0-SNAPSHOT
+[02:16:44] [Server thread/INFO]: Skyblock>> Succesfully loaded Commands
+[02:16:44] [Server thread/INFO]: Skyblock>> Succesfully loaded Events
+[02:16:44] [Server thread/INFO]: Server permissions file permissions.yml is empty, ignoring it
+[02:16:44] [Server thread/INFO]: Done (14,060s)! For help, type "help" or "?"
+[02:17:06] [User Authenticator #1/INFO]: UUID of player Chocobo_Coding is b02b93a3-e56b-4d40-9423-43528c2ca46f
+[02:17:06] [Server thread/ERROR]: Could not pass event PlayerJoinEvent to SkyblockRecreation v1.0-SNAPSHOT
+org.bukkit.event.EventException
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:310) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.plugin.RegisteredListener.callEvent(RegisteredListener.java:62) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.plugin.SimplePluginManager.fireEvent(SimplePluginManager.java:502) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.plugin.SimplePluginManager.callEvent(SimplePluginManager.java:487) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerList.onPlayerJoin(PlayerList.java:298) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerList.a(PlayerList.java:157) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.LoginListener.b(LoginListener.java:144) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.LoginListener.c(LoginListener.java:54) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.NetworkManager.a(NetworkManager.java:231) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.ServerConnection.c(ServerConnection.java:148) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:814) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at java.base/java.lang.Thread.run(Thread.java:834) [?:?]
+Caused by: java.lang.NullPointerException
+	at me.chocobo.skyblockrecreation.dataTypes.SkyblockPlayer.<init>(SkyblockPlayer.java:23) ~[?:?]
+	at me.chocobo.skyblockrecreation.events.PlayerJoinListener.onPlayerJoin(PlayerJoinListener.java:14) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[?:?]
+	at org.bukkit.plugin.java.JavaPluginLoader$1.execute(JavaPluginLoader.java:306) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	... 14 more
+[02:17:07] [Server thread/INFO]: Chocobo_Coding[/127.0.0.1:63579] logged in with entity id 378 at ([world]-5.5, 66.0, 254.5)
+[02:17:43] [Server thread/INFO]: Chocobo_Coding issued server command: /giveitem
+[02:17:43] [Server thread/ERROR]: null
+org.bukkit.command.CommandException: Unhandled exception executing command 'giveitem' in plugin SkyblockRecreation v1.0-SNAPSHOT
+	at org.bukkit.command.PluginCommand.execute(PluginCommand.java:46) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.command.SimpleCommandMap.dispatch(SimpleCommandMap.java:141) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:641) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.handleCommand(PlayerConnection.java:1162) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:997) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:45) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:1) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) [?:?]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at java.base/java.lang.Thread.run(Thread.java:834) [?:?]
+Caused by: java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at me.chocobo.skyblockrecreation.commands.GiveItemCommand.onCommand(GiveItemCommand.java:16) ~[?:?]
+	at org.bukkit.command.PluginCommand.execute(PluginCommand.java:44) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	... 15 more
+[02:17:43] [Server thread/INFO]: Chocobo_Coding issued server command: /giveitem 1
+[02:17:44] [Server thread/ERROR]: null
+org.bukkit.command.CommandException: Unhandled exception executing command 'giveitem' in plugin SkyblockRecreation v1.0-SNAPSHOT
+	at org.bukkit.command.PluginCommand.execute(PluginCommand.java:46) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.command.SimpleCommandMap.dispatch(SimpleCommandMap.java:141) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at org.bukkit.craftbukkit.v1_8_R3.CraftServer.dispatchCommand(CraftServer.java:641) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.handleCommand(PlayerConnection.java:1162) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnection.a(PlayerConnection.java:997) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:45) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PacketPlayInChat.a(PacketPlayInChat.java:1) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.PlayerConnectionUtils$1.run(SourceFile:13) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515) [?:?]
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264) [?:?]
+	at net.minecraft.server.v1_8_R3.SystemUtils.a(SourceFile:44) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.B(MinecraftServer.java:715) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.DedicatedServer.B(DedicatedServer.java:374) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.A(MinecraftServer.java:654) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at net.minecraft.server.v1_8_R3.MinecraftServer.run(MinecraftServer.java:557) [spigot.jar:git-Spigot-db6de12-18fbb24]
+	at java.base/java.lang.Thread.run(Thread.java:834) [?:?]
+Caused by: java.lang.NullPointerException
+	at me.chocobo.skyblockrecreation.commands.GiveItemCommand.onCommand(GiveItemCommand.java:16) ~[?:?]
+	at org.bukkit.command.PluginCommand.execute(PluginCommand.java:44) ~[spigot.jar:git-Spigot-db6de12-18fbb24]
+	... 15 more
