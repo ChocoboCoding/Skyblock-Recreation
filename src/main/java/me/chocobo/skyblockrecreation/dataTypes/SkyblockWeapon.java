@@ -2,6 +2,7 @@ package me.chocobo.skyblockrecreation.dataTypes;
 
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import me.chocobo.skyblockrecreation.enums.ItemType;
+import me.chocobo.skyblockrecreation.enums.Reforge;
 import me.chocobo.skyblockrecreation.enums.Rune;
 import me.chocobo.skyblockrecreation.utils.LoreBuilder;
 import org.bukkit.Material;
@@ -19,6 +20,7 @@ public class SkyblockWeapon extends SkyblockItem {
         setType(ItemType.MELEE);
         setRarity(rarity);
         setItemStats(itemStats);
+        setReforge(Reforge.DEFAULT);
     }
 
     public Rune getRune() {

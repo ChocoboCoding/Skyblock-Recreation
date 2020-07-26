@@ -2,6 +2,7 @@ package me.chocobo.skyblockrecreation.dataTypes;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 import javax.swing.plaf.IconUIResource;
 import java.util.HashMap;
@@ -225,8 +226,13 @@ public class SkyblockPlayer extends SkyblockEntity {
     }
 
     public SkyblockPlayer giveItem(SkyblockItem item) {
+        System.out.println("giveItem 1");
         inventory.addSkyblockItem(item);
-        Bukkit.getPlayer(getUuid()).getInventory().addItem(item.createItem());
+        System.out.print("giveItem 2");
+        ItemStack itemStack = item.createItem();
+        System.out.print("giveItem 3");
+        Bukkit.getPlayer(getUuid()).getInventory().addItem(itemStack);
+        System.out.println("giveItem 4");
         return this;
     }
 

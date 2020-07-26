@@ -3,10 +3,12 @@ package me.chocobo.skyblockrecreation.enums;
 import me.chocobo.skyblockrecreation.dataTypes.ItemStats;
 import me.chocobo.skyblockrecreation.dataTypes.ReforgeStats;
 import me.chocobo.skyblockrecreation.utils.LoreBuilder;
+import org.bukkit.entity.Item;
 
 import java.util.List;
 
 public enum Reforge {
+    DEFAULT("", ItemType.NORMAL, false, new ReforgeStats(new ItemStats(), new ItemStats(), new ItemStats(), new ItemStats(), new ItemStats()), ""),
     GENTLE("Gentle", ItemType.MELEE, true, new ReforgeStats(new ItemStats().setStrength(3).setAttackSpeed(8), new ItemStats().setStrength(5).setAttackSpeed(10), new ItemStats().setStrength(7).setAttackSpeed(15), new ItemStats().setStrength(10).setAttackSpeed(20), new ItemStats().setStrength(15).setAttackSpeed(25)), ""),
     ODD("Odd", ItemType.MELEE, true, new ReforgeStats(new ItemStats().setCritHit(12).setCritDamage(10).setIntelligence(-5), new ItemStats().setCritHit(15).setCritDamage(15).setIntelligence(-10), new ItemStats().setCritHit(15).setCritDamage(15).setIntelligence(-18), new ItemStats().setCritHit(25).setCritDamage(30).setIntelligence(-24), new ItemStats().setCritHit(25).setCritDamage(30).setIntelligence(-50)), ""),
     FAST("Fast", ItemType.MELEE, true, new ReforgeStats(new ItemStats().setAttackSpeed(10), new ItemStats().setAttackSpeed(20), new ItemStats().setAttackSpeed(30), new ItemStats().setAttackSpeed(40), new ItemStats().setAttackSpeed(50)), ""),

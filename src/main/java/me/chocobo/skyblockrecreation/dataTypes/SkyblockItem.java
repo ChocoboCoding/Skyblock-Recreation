@@ -222,13 +222,21 @@ public class SkyblockItem {
     }
 
     public ItemStack createItem() {
+        System.out.println("createItem 1");
         ItemStack itemStack = new ItemStack(getMaterial());
+        System.out.println("createItem 2");
         ItemMeta itemMeta = itemStack.getItemMeta();
+        System.out.println("createItem 3");
         itemMeta.setDisplayName(getName());
+        System.out.println("createItem 4");
         itemMeta.setLore(new LoreBuilder(this).build());
+        System.out.println("createItem 5");
         itemMeta.spigot().setUnbreakable(true);
+        System.out.println("createItem 6");
         itemStack.setItemMeta(itemMeta);
+        System.out.println("createItem 7");
         itemStack.setAmount(getAmount());
+        System.out.println("createItem 8");
         return itemStack;
     }
 }

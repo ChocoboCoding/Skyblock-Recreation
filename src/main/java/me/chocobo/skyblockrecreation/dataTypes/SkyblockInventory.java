@@ -31,9 +31,12 @@ public class SkyblockInventory {
     public SkyblockInventory addSkyblockItem(SkyblockItem item) {
         for(int i = 0; i < 40; i++) {
             if (inventory.get(i) == null) {
+                System.out.println("addSkyblockItem if 1 " + i);
                 inventory.put(i, item);
+                System.out.println("addSkyblockItem if 2 " + i);
                 break;
             }
+            System.out.println("addSkyblockItem" + i);
         }
         return this;
     }

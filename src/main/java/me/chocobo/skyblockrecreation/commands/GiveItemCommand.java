@@ -14,9 +14,14 @@ public class GiveItemCommand implements CommandExecutor {
         if (sender instanceof Player) {
             if (args.length == 1) {
                 Player player = (Player) sender;
+                System.out.println("onCommand 1");
                 SkyblockPlayer skyblockPlayer = Startup.getSkyblockPlayers().get(player.getUniqueId());
+                System.out.println("onCommand 2");
                 SkyblockItem item = Startup.getSkyblockItems().get(Integer.parseInt(args[0]));
+                System.out.println(item.getName());
+                System.out.println("onCommand 3");
                 skyblockPlayer.giveItem(item);
+                System.out.println("onCommand 4");
             }
         } else sender.sendMessage("§cYou have to be a Player to use this Command");
         return false;
