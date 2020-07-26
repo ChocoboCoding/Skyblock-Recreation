@@ -92,7 +92,6 @@ public class Startup {
         profileManagement();
         close();
         settings();
-        weaponCache();
     }
 
     /*
@@ -101,13 +100,13 @@ public class Startup {
      */
 
     public static void weaponCache() {
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD,"Wooden Sword", "", ItemRarity.COMMON,
+        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD,"Wooden Sword", "1", ItemRarity.COMMON,
                 new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Golden Sword", "", ItemRarity.COMMON,
+        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Golden Sword", "2", ItemRarity.COMMON,
                 new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Stone Sword", "", ItemRarity.COMMON,
+        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Stone Sword", "3", ItemRarity.COMMON,
                 new ItemStats().setDamage(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "IRON Sword", "", ItemRarity.COMMON,
+        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "IRON Sword", "4", ItemRarity.COMMON,
                 new ItemStats().setDamage(30)));
         addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Diamond Sword", "", ItemRarity.UNCOMMON,
                 new ItemStats().setDamage(35)));

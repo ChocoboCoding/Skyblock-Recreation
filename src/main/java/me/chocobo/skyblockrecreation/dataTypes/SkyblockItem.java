@@ -25,6 +25,10 @@ public class SkyblockItem {
     protected ItemStats itemStats;
     protected Rune rune;
 
+    public SkyblockItem() {
+        setAmount(1);
+    }
+
     public String getName() {
         return name;
     }
@@ -217,14 +221,14 @@ public class SkyblockItem {
         return this;
     }
 
-    public ItemStack createSkyblockItem(SkyblockItem skyblockItem) {
-        ItemStack itemStack = new ItemStack(skyblockItem.getMaterial());
+    public ItemStack createItem() {
+        ItemStack itemStack = new ItemStack(getMaterial());
         ItemMeta itemMeta = itemStack.getItemMeta();
-        itemMeta.setDisplayName(skyblockItem.getName());
-        itemMeta.setLore(lore);
-        itemMeta.setUnbreakable(true);
+        itemMeta.setDisplayName(getName());
+        itemMeta.setLore(new LoreBuilder(this).build());
+        itemMeta.spigot().setUnbreakable(true);
         itemStack.setItemMeta(itemMeta);
-        itemStack.setAmount(skyblockItem.getAmount());
+        itemStack.setAmount(getAmount());
         return itemStack;
     }
 }

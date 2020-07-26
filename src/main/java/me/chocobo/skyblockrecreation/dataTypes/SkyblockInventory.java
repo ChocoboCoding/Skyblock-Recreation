@@ -2,14 +2,15 @@ package me.chocobo.skyblockrecreation.dataTypes;
 
 import org.bukkit.inventory.ItemStack;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class SkyblockInventory {
 
     Map<Integer, SkyblockItem> inventory;
 
-    public SkyblockInventory(Map<Integer, SkyblockItem> inventory) {
-        this.inventory = inventory;
+    public SkyblockInventory() {
+        setInventory(new HashMap<>());
     }
 
     public Map<Integer, SkyblockItem> getInventory() {
@@ -36,6 +37,7 @@ public class SkyblockInventory {
         }
         return this;
     }
+
     public SkyblockInventory removeSkyblockItem(Integer slot) {
         inventory.remove(slot);
         return this;

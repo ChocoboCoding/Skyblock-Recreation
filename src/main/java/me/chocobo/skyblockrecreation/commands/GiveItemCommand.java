@@ -1,5 +1,6 @@
 package me.chocobo.skyblockrecreation.commands;
 
+import me.chocobo.skyblockrecreation.dataTypes.SkyblockItem;
 import me.chocobo.skyblockrecreation.dataTypes.SkyblockPlayer;
 import me.chocobo.skyblockrecreation.utils.Startup;
 import org.bukkit.command.Command;
@@ -11,10 +12,12 @@ public class GiveItemCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
-            Player player = (Player) sender;
-            SkyblockPlayer skyblockPlayer = Startup.getSkyblockPlayers().get(player);
-            skyblockPlayer.giveItem(Startup.getSkyblockItems().get(Integer.getInteger(args[0])));
-
+            if (args.length == 1) {
+                Player player = (Player) sender;
+                SkyblockPlayer skyblockPlayer = Startup.getSkyblockPlayers().get(player.getUniqueId());
+                SkyblockItem item = Startup.getSkyblockItems().get(Integer.parseInt(args[0]));
+                skyblockPlayer.giveItem(item);
+            }
         } else sender.sendMessage("§cYou have to be a Player to use this Command");
         return false;
     }

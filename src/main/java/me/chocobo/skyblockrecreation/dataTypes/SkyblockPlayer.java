@@ -20,9 +20,10 @@ public class SkyblockPlayer extends SkyblockEntity {
 
     public SkyblockPlayer(UUID uuid) {
         setUuid(uuid);
+        setPlayerStats(new PlayerStats());
         playerStats.setStrength(20).setCritHit(20).setCritDamage(50).setMaxHealth(1000).setMovementSpeed(100).setIntelligence(100).
                 setAttackSpeed(100);
-
+        setInventory(new SkyblockInventory());
     }
 
     public UUID getUuid() {
@@ -225,6 +226,7 @@ public class SkyblockPlayer extends SkyblockEntity {
 
     public SkyblockPlayer giveItem(SkyblockItem item) {
         inventory.addSkyblockItem(item);
+        Bukkit.getPlayer(getUuid()).getInventory().addItem(item.createItem());
         return this;
     }
 

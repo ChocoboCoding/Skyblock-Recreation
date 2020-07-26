@@ -1,17 +1,10 @@
 package me.chocobo.skyblockrecreation.dataTypes;
 
-import me.chocobo.skyblockrecreation.SkyblockRecreation;
 import me.chocobo.skyblockrecreation.enums.EnemyType;
-import me.chocobo.skyblockrecreation.utils.Functions;
 import me.chocobo.skyblockrecreation.utils.Startup;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 
 public class SkyblockEnemy extends SkyblockEntity{
     protected EnemyType type;

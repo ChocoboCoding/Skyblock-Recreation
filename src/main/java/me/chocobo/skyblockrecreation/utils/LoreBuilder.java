@@ -8,11 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LoreBuilder {
+    SkyblockItem item;
     List<String> tempLore;
     List<String> finalLore;
     ItemType[] itemTypes = ItemType.values();
 
-    public LoreBuilder builder(SkyblockItem item) {
+    public LoreBuilder(SkyblockItem item) {
 
 
         if (item.getType().equals(ItemType.MELEE) || item.getType().equals(ItemType.SWORD) || item.getType().equals(ItemType.ROD) || item.getType().equals(ItemType.BOW)) {
@@ -28,11 +29,6 @@ public class LoreBuilder {
             finalLore.add("§8This item can be reforged!");
         }
         finalLore.add(item.getRarity().getLoreMessage() + " " + item.getType().getLoreMessage());
-        return this;
-    }
-
-    public LoreBuilder(){
-
     }
 
 
@@ -84,6 +80,10 @@ public class LoreBuilder {
     private LoreBuilder addReforgeDescription(SkyblockItem item) {
         finalLore.addAll(item.getReforge().getLore());
         return this;
+    }
+
+    public List<String> build() {
+        return finalLore;
     }
 
     public static List<String> cutLore(String descriptionString) {

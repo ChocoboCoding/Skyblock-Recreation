@@ -3,6 +3,7 @@ package me.chocobo.skyblockrecreation.dataTypes;
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import me.chocobo.skyblockrecreation.enums.ItemType;
 import me.chocobo.skyblockrecreation.enums.Rune;
+import me.chocobo.skyblockrecreation.utils.LoreBuilder;
 import org.bukkit.Material;
 
 import java.util.List;
