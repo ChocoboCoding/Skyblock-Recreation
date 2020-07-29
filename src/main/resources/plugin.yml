@@ -6,8 +6,10 @@ commands:
   giveitem:
     description: Gives you the requested Item
     aliases: [givei, gitem]
-    usage: "§cUsage: /giveitem <id>"
   spawnenemy:
-    decription: Spawns the enemy you requested
+    description: Spawns the enemy you requested
     aliases: spawn
-    usage: "§cUsage: /spawnenemy [id]"
+  setstrength:
+    description: Sets your Strength
+  getiteminhand:
+    description: Prints the stats of the item in your hand in the chat

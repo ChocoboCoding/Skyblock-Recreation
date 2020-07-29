@@ -1,8 +1,9 @@
 package me.chocobo.skyblockrecreation;
 
+import me.chocobo.skyblockrecreation.commands.GetItemInHandCommand;
 import me.chocobo.skyblockrecreation.commands.GiveItemCommand;
+import me.chocobo.skyblockrecreation.commands.SetStrengthCommand;
 import me.chocobo.skyblockrecreation.commands.SpawnEnemyCommand;
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockEnemy;
 import me.chocobo.skyblockrecreation.events.DamageListener;
 import me.chocobo.skyblockrecreation.events.InventoryClickListener;
 import me.chocobo.skyblockrecreation.events.PlayerJoinListener;
@@ -23,13 +24,13 @@ public final class SkyblockRecreation extends JavaPlugin {
         // Plugin startup logic
         loadCommands();
         loadEvents();
-        Startup.menuCache();
-        Startup.enemyCache();
-        Startup.weaponCache();
+        loadCache();
     }
     public void loadCommands() {
         getCommand("giveitem").setExecutor(new GiveItemCommand());
         getCommand("spawnenemy").setExecutor(new SpawnEnemyCommand());
+        getCommand("setstrength").setExecutor(new SetStrengthCommand());
+        getCommand("getiteminhand").setExecutor(new GetItemInHandCommand());
         System.out.println("Skyblock>> Succesfully loaded Commands");
     }
 
@@ -40,6 +41,13 @@ public final class SkyblockRecreation extends JavaPlugin {
         pm.registerEvents(new InventoryClickListener(), this);
         pm.registerEvents(new DamageListener(), this);
         System.out.println("Skyblock>> Succesfully loaded Events");
+    }
+
+    public void loadCache() {
+        Startup.menuCache();
+        Startup.enemyCache();
+        Startup.weaponCache();
+        System.out.println("Skyblock >> Succesfully loaded Cache");
     }
 
     @Override

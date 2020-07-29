@@ -14,12 +14,12 @@ public class SkyblockWeapon extends SkyblockItem {
     private Rune rune;
 
     public SkyblockWeapon(Material material, String name, String lore, ItemRarity rarity, ItemStats itemStats) {
+        super(itemStats);
         setMaterial(material);
         setName(name);
         setLore(lore);
         setType(ItemType.MELEE);
         setRarity(rarity);
-        setItemStats(itemStats);
         setReforge(Reforge.DEFAULT);
     }
 

@@ -14,7 +14,7 @@ import java.util.*;
 
 public class Startup {
     private static Map<UUID, SkyblockPlayer> players = new HashMap<>();
-    private static List<SkyblockEnemy> enemies = new ArrayList<>();
+    private static List<EnemyStats> enemies = new ArrayList<>();
     private static Map<UUID, SkyblockEnemy> livingEnemies = new HashMap<>();
     private static List<String> lore = new ArrayList<>();
     private static List<ItemStack> uiItems = new ArrayList<>();
@@ -26,7 +26,7 @@ public class Startup {
     public static Map<UUID, SkyblockPlayer> getSkyblockPlayers() {
         return players;
     }
-    public static List<SkyblockEnemy> getSkyblockEnemies() {
+    public static List<EnemyStats> getSkyblockEnemies() {
         return enemies;
     }
     public static List<ItemStack> getUiItems() {
@@ -42,7 +42,7 @@ public class Startup {
     public static void addSkyblockPlayer(SkyblockPlayer player) {
         players.put(player.getUuid(), player);
     }
-    public static void addSkyblockEnemy(SkyblockEnemy enemy) {
+    public static void addSkyblockEnemy(EnemyStats enemy) {
         enemies.add(enemy);
     }
     private static void addUiItems(ItemStack itemStack) {
@@ -178,7 +178,7 @@ public class Startup {
                 new ItemStats().setDamage(175).setStrength(125).setCritDamage(25)));
         addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pigman Sword", "", ItemRarity.LEGENDARY,
                 new ItemStats().setDamage(200).setStrength(100).setCritDamage(30).setCritHit(5)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the Dragons", "", ItemRarity.LEGENDARY,
+        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the Dragons", "a", ItemRarity.LEGENDARY,
                 new ItemStats().setDamage(225).setStrength(100)));
         addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_HOE, "Reaper Scythe", "", ItemRarity.LEGENDARY,
                 new ItemStats().setDamage(333).setMovementSpeed(10)));
@@ -188,61 +188,61 @@ public class Startup {
 
     public static void enemyCache() {
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_VILLAGER, new EnemyStats().setLevel(1).setDamage(20).setMaxHp(5)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE, new EnemyStats().setLevel(1).setMaxHp(100).setDamage(20)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, new EnemyStats().setLevel(1).setMaxHp(2000).setDamage(475)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_SMALL, new EnemyStats().setLevel(5).setMaxHp(80).setDamage(70)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_MEDIUM, new EnemyStats().setLevel(10).setMaxHp(150).setDamage(100)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME_LARGE, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(150)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CREEPER, new EnemyStats().setLevel(3).setMaxHp(120).setDamage(80)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.LAPIS_ZOMBIE, new EnemyStats().setLevel(7).setMaxHp(200).setDamage(50)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, new EnemyStats().setLevel(6).setMaxHp(200).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_SKELETON, new EnemyStats().setLevel(20).setMaxHp(300).setDamage(190)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_SKELETON, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(142)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DIAMOND_ZOMBIE, new EnemyStats().setLevel(20).setMaxHp(300).setDamage(275)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HARDENED_DIAMOND_ZOMBIE, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(200)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, new EnemyStats().setLevel(10).setMaxHp(250).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, new EnemyStats().setLevel(2).setMaxHp(180).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPLITTER_SPIDER, new EnemyStats().setLevel(4).setMaxHp(220).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, new EnemyStats().setLevel(4).setMaxHp(170).setDamage(55)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.DASHER_SPIDER, new EnemyStats().setLevel(6).setMaxHp(210).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WEAVER_SPIDER, new EnemyStats().setLevel(3).setMaxHp(160).setDamage(35)));
+        addSkyblockEnemy(new EnemyStats(1, 100, 20, EnemyType.ZOMBIE));
+        addSkyblockEnemy(new EnemyStats(1, 2000, 475, EnemyType.ENDERMITE));
+        addSkyblockEnemy(new EnemyStats(5, 80, 70, EnemyType.SLIME_SMALL));
+        addSkyblockEnemy(new EnemyStats(10, 150, 100, EnemyType.SLIME_MEDIUM));
+        addSkyblockEnemy(new EnemyStats(15, 250, 150, EnemyType.SLIME_LARGE));
+        addSkyblockEnemy(new EnemyStats(3, 120, 80, EnemyType.CREEPER));
+        addSkyblockEnemy(new EnemyStats(7, 200, 50, EnemyType.LAPIS_ZOMBIE));
+        addSkyblockEnemy(new EnemyStats(6, 200, 0, EnemyType.SKELETON));
+        addSkyblockEnemy(new EnemyStats(20, 300, 190, EnemyType.DIAMOND_SKELETON));
+        addSkyblockEnemy(new EnemyStats(15, 250, 142, EnemyType.HARDENED_DIAMOND_SKELETON));
+        addSkyblockEnemy(new EnemyStats(20, 300, 275, EnemyType.DIAMOND_ZOMBIE));
+        addSkyblockEnemy(new EnemyStats(15, 250, 200, EnemyType.HARDENED_DIAMOND_ZOMBIE));
+        addSkyblockEnemy(new EnemyStats(10, 250, 0, EnemyType.ZOMBIE_PIGMAN));
+        addSkyblockEnemy(new EnemyStats(2, 180, 0, EnemyType.SPLITTER_SPIDER));
+        addSkyblockEnemy(new EnemyStats(4, 220, 0, EnemyType.SPLITTER_SPIDER));
+        addSkyblockEnemy(new EnemyStats(4, 170, 55, EnemyType.DASHER_SPIDER));
+        addSkyblockEnemy(new EnemyStats(6, 210, 0, EnemyType.DASHER_SPIDER));
+        addSkyblockEnemy(new EnemyStats(3, 160, 35, EnemyType.WEAVER_SPIDER));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPIDER_JOCKEY, 3, 220, 55));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.JOCKEY_SKELETON, new EnemyStats().setLevel(3).setMaxHp(250).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SKELETON, new EnemyStats().setLevel(2).setMaxHp(100).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.VORACIOUS_SPIDER, new EnemyStats().setLevel(10).setMaxHp(1000).setDamage(100)));
+        addSkyblockEnemy(new EnemyStats(3, 250, 0, EnemyType.JOCKEY_SKELETON));
+        addSkyblockEnemy(new EnemyStats(2, 100, 0, EnemyType.SKELETON));
+        addSkyblockEnemy(new EnemyStats(10, 1000, 100, EnemyType.VORACIOUS_SPIDER));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.BROOD_MOTHER, 12, 6000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SILVERFISH, new EnemyStats().setLevel(1).setMaxHp(50).setDamage(20)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SLIME, new EnemyStats().setLevel(8).setMaxHp(0).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, new EnemyStats().setLevel(12).setMaxHp(500).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.BLAZE, new EnemyStats().setLevel(15).setMaxHp(600).setDamage(9)));
+        addSkyblockEnemy(new EnemyStats(1, 50, 20, EnemyType.SILVERFISH));
+        addSkyblockEnemy(new EnemyStats(8, 0, 0, EnemyType.SLIME));
+        addSkyblockEnemy(new EnemyStats(12, 500, 0, EnemyType.BLAZE));
+        addSkyblockEnemy(new EnemyStats(15, 600, 9, EnemyType.BLAZE));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.WITHER_SKELETON, new EnemyStats().setLevel(10).setMaxHp(250).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZOMBIE_PIGMAN, new EnemyStats().setLevel(12).setMaxHp(240).setDamage(0)));
+        addSkyblockEnemy(new EnemyStats(12, 240, 0, EnemyType.ZOMBIE_PIGMAN));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_BOSS, 100, 150000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_SMALL, new EnemyStats().setLevel(3).setMaxHp(200).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_MEDIUM, new EnemyStats().setLevel(6).setMaxHp(250).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CUBE_LARGE, new EnemyStats().setLevel(9).setMaxHp(300).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GHAST, new EnemyStats().setLevel(17).setMaxHp(330).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WOLF, new EnemyStats().setLevel(15).setMaxHp(250).setDamage(90)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_WOLF, new EnemyStats().setLevel(55).setMaxHp(15000).setDamage(800)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_SMALL, new EnemyStats().setLevel(55).setMaxHp(1500).setDamage(800)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_MEDIUM, new EnemyStats().setLevel(45).setMaxHp(6000).setDamage(600)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMAN_LARGE, new EnemyStats().setLevel(50).setMaxHp(9000).setDamage(700)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ZEALOT, new EnemyStats().setLevel(55).setMaxHp(13000).setDamage(1250)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CHEST_ZEALOT,new EnemyStats().setLevel(55).setMaxHp(13000).setDamage(1250)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SPECIAL_ZEALOT, new EnemyStats().setLevel(55).setMaxHp(2000).setDamage(1250)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.WATCHER, new EnemyStats().setLevel(55).setMaxHp(9500).setDamage(475)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.OBSIDIAN_DEFENDER, new EnemyStats().setLevel(55).setMaxHp(10000).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDERMITE, new EnemyStats().setLevel(40).setMaxHp(2000).setDamage(475)));
+        addSkyblockEnemy(new EnemyStats(3, 200, 0, EnemyType.CUBE_SMALL));
+        addSkyblockEnemy(new EnemyStats(6, 250, 0, EnemyType.CUBE_MEDIUM));
+        addSkyblockEnemy(new EnemyStats(9, 300, 0, EnemyType.CUBE_LARGE));
+        addSkyblockEnemy(new EnemyStats(17, 300, 0, EnemyType.GHAST));
+        addSkyblockEnemy(new EnemyStats(15, 250, 90, EnemyType.WOLF));
+        addSkyblockEnemy(new EnemyStats(55, 15000, 800, EnemyType.OLD_WOLF));
+        addSkyblockEnemy(new EnemyStats(55, 1500, 800, EnemyType.ENDERMAN_SMALL));
+        addSkyblockEnemy(new EnemyStats(45, 6000, 600, EnemyType.ENDERMAN_MEDIUM));
+        addSkyblockEnemy(new EnemyStats(50, 9000, 700, EnemyType.ENDERMAN_LARGE));
+        addSkyblockEnemy(new EnemyStats(55, 13000, 1250, EnemyType.ZEALOT));
+        addSkyblockEnemy(new EnemyStats(55, 13000, 1250, EnemyType.CHEST_ZEALOT));
+        addSkyblockEnemy(new EnemyStats(55, 2000, 1250, EnemyType.SPECIAL_ZEALOT));
+        addSkyblockEnemy(new EnemyStats(55, 9500, 475, EnemyType.WATCHER));
+        addSkyblockEnemy(new EnemyStats(55, 10000, 0, EnemyType.OBSIDIAN_DEFENDER));
+        addSkyblockEnemy(new EnemyStats(40, 2000, 475, EnemyType.ENDERMITE));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.ENDSTONE_PROTECTOR, 0, 5000000, 0));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.DRAGON, 0, 7500000, 0));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.OLD_DRAGON, 0, 12000000, 0));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.YOUNG_DRAGON, 0, 6000000, 0));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.SUPERIOR_DRAGON, 0, 10000000, 0));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.CRYPT_GHOUL, new EnemyStats().setLevel(30).setMaxHp(2000).setDamage(350)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.GOLDEN_GHOUL, new EnemyStats().setLevel(50).setMaxHp(45000).setDamage(800)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.PACK_SPIRIT, new EnemyStats().setLevel(30).setMaxHp(6000).setDamage(0)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.HOWLING_SPIRIT, new EnemyStats().setLevel(35).setMaxHp(7000).setDamage(500)));
-        addSkyblockEnemy(new SkyblockEnemy(EnemyType.SOUL_OF_THE_ALPHA, new EnemyStats().setLevel(55).setMaxHp(31150).setDamage(1150)));
+        addSkyblockEnemy(new EnemyStats(30, 2000, 350, EnemyType.CRYPT_GHOUL));
+        addSkyblockEnemy(new EnemyStats(50, 45000, 800, EnemyType.GOLDEN_GHOUL));
+        addSkyblockEnemy(new EnemyStats(30, 6000, 0, EnemyType.PACK_SPIRIT));
+        addSkyblockEnemy(new EnemyStats(35, 7000, 500, EnemyType.HOWLING_SPIRIT));
+        addSkyblockEnemy(new EnemyStats(55, 31150, 1150, EnemyType.SOUL_OF_THE_ALPHA));
         //addSkyblockEnemy(new SkyblockEnemy(EnemyType.HEADLESS_HORSEMAN, 100, 3000000, 0));
 
 

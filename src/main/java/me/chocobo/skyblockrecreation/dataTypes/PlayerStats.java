@@ -5,6 +5,9 @@ public class PlayerStats extends EntityStats {
     protected int strength, critDamage, critHit, attackSpeed, intelligence, mana, movementSpeed, defense, damageReduction,
             currentEffectiveHealth, maxEffectiveHealth, seaCreatureChance, magicFind, petLuck;
 
+    public PlayerStats(int maxHealth) {
+        super(maxHealth);
+    }
 
     public int getStrength() {
         return strength;
@@ -33,10 +36,10 @@ public class PlayerStats extends EntityStats {
     public int getDamageReduction() {
         return damageReduction;
     }
-    public int getMaxEffectiveHp() {
+    public int getMaxEffectiveHealth() {
         return maxEffectiveHealth;
     }
-    public int getCurrentEffectiveHp() {
+    public int getCurrentEffectiveHealth() {
         return currentEffectiveHealth;
     }
     public int getSeaCreatureChance() {
@@ -74,7 +77,6 @@ public class PlayerStats extends EntityStats {
         this.mana = mana;
         return this;
     }
-
     public PlayerStats setMovementSpeed(int movementSpeed) {
         this.movementSpeed = movementSpeed;
         return this;
@@ -88,11 +90,13 @@ public class PlayerStats extends EntityStats {
         this.damageReduction = damageReduction;
         return this;
     }
+    @Override
     public PlayerStats setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
         maxEffectiveHealth = getMaxHealth() * (1 + getDefense() / 100);
         return this;
     }
+    @Override
     public PlayerStats setCurrentHealth(int currentHealth) {
         this.currentHealth = currentHealth;
         currentEffectiveHealth = getMaxHealth() * (1+getDefense() / 100);

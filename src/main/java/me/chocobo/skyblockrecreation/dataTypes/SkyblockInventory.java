@@ -7,10 +7,9 @@ import java.util.Map;
 
 public class SkyblockInventory {
 
-    Map<Integer, SkyblockItem> inventory;
+    Map<Integer, SkyblockItem> inventory = new HashMap<>();
 
     public SkyblockInventory() {
-        setInventory(new HashMap<>());
     }
 
     public Map<Integer, SkyblockItem> getInventory() {
@@ -55,6 +54,6 @@ public class SkyblockInventory {
             }
             return getSkyblockItem(i);
         }
-        return new SkyblockItem();
+        return new SkyblockItem(new ItemStats());
     }
 }
