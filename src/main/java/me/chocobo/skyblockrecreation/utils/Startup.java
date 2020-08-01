@@ -7,6 +7,7 @@ import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -32,8 +33,15 @@ public class Startup {
     public static List<ItemStack> getUiItems() {
         return uiItems;
     }
-    public static List<SkyblockItem> getSkyblockItems() {
-        return skyblockItems;
+    public static SkyblockItem getSkyblockItem(int index) {
+        SkyblockItem item = skyblockItems.get(index);
+        SkyblockItem copy = new SkyblockItem();
+        copy.setName(item.getName()).setMaterial(item.getMaterial()).setAmount(item.getAmount()).setRarity(item.getRarity()).
+                setType(item.getType()).setReforge(item.getReforge()).setLore(item.getLore()).setHpb(item.getHpb()).
+                setDamage(item.getDamage()).setStrength(item.getStrength()).setCritDamage(item.getCritDamage()).
+                setCritHit(item.getCritHit()).setAttackSpeed(item.getAttackSpeed()).setIntelligence(item.getIntelligence()).
+                setMovementSpeed(item.getMovementSpeed()).setDefense(item.getDefense()).setRune(item.getRune());
+        return copy;
     }
     public static Map<UUID, SkyblockEnemy> getLivingEnemies() {
         return livingEnemies;
@@ -75,6 +83,12 @@ public class Startup {
         return inv;
     }
 
+    public static void caches() {
+        menuCache();
+        weaponCache();
+        enemyCache();
+    }
+
     public static void menuCache() {
         sbmenu();
         skills();
@@ -100,90 +114,93 @@ public class Startup {
      */
 
     public static void weaponCache() {
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD,"Wooden Sword", "1", ItemRarity.COMMON,
-                new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Golden Sword", "2", ItemRarity.COMMON,
-                new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Stone Sword", "3", ItemRarity.COMMON,
-                new ItemStats().setDamage(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "IRON Sword", "4", ItemRarity.COMMON,
-                new ItemStats().setDamage(30)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Diamond Sword", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(35)));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Aspect of the Jerry","", ItemRarity.COMMON,
-                new ItemStats().setDamage(1)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Fancy Sword", "", ItemRarity.COMMON,
-                new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Rogue Sword", "", ItemRarity.COMMON,
-                new ItemStats().setDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Spider Sword", "", ItemRarity.COMMON,
-                new ItemStats().setDamage(30)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Undead Sword", "", ItemRarity.COMMON,
-                new ItemStats().setDamage(30)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "End Sword", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(35)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Cleaver", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(40).setStrength(10)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Flaming Sword", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(50).setStrength(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.PRISMARINE_SHARD, "Prismarine Blade", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(50).setStrength(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Hunter Knife", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(50).setMovementSpeed(40)));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Tactician's Sword", "", ItemRarity.RARE,
-                new ItemStats().setDamage(50).setStrength(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.BLAZE_ROD, "Ember Rod", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(80).setStrength(35).setIntelligence(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_HOE, "Frozen Scythe", "", ItemRarity.RARE,
-                new ItemStats().setDamage(80)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Golem Sword", "", ItemRarity.RARE,
-                new ItemStats().setDamage(80).setStrength(125).setDefense(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_AXE, "Raiders Axe", "", ItemRarity.RARE,
-                new ItemStats().setDamage(80).setStrength(50)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Revenant Falchion", "", ItemRarity.RARE,
-                new ItemStats().setDamage(90).setStrength(50).setIntelligence(100)));
-        addSkyblockItems(new SkyblockWeapon(Material.GHAST_TEAR, "Silver Fang", "", ItemRarity.UNCOMMON,
-                new ItemStats().setDamage(100)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Shaman Sword", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(100).setStrength(20).setMovementSpeed(5)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the End", "", ItemRarity.RARE,
-                new ItemStats().setDamage(100).setStrength(100)));
-        addSkyblockItems(new SkyblockWeapon(Material.WOOD_SWORD, "Scorpion Foil", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(100).setStrength(100)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Zombie Sword", "", ItemRarity.RARE,
-                new ItemStats().setDamage(100).setStrength(50).setIntelligence(50)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Ornate Zombie Sword", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(110).setStrength(60).setIntelligence(50)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "End Stone Sword", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(120).setStrength(80)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Recluse Fang", "", ItemRarity.RARE,
-                new ItemStats().setDamage(120).setStrength(30).setCritDamage(20)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Reaper Falchion", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(120).setStrength(100).setIntelligence(200)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pooch Sword", "", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(120).setStrength(20).setMovementSpeed(5)));
-        addSkyblockItems(new SkyblockWeapon(Material.MUTTON, "Edible Mace", "", ItemRarity.RARE,
-                new ItemStats().setDamage(125).setStrength(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.STICK, "Ink Wand", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(130).setStrength(90)));
-        addSkyblockItems(new SkyblockWeapon(Material.EMERALD, "Emerald Blade", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(130)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Midas Sword", "", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(150)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Leaping Sword", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(150).setStrength(100).setCritDamage(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.IRON_SWORD, "Yeti Sword", "", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(150).setStrength(150).setIntelligence(50)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Silk-Edge Sword", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(175).setStrength(125).setCritDamage(25)));
-        addSkyblockItems(new SkyblockWeapon(Material.GOLD_SWORD, "Pigman Sword", "", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(200).setStrength(100).setCritDamage(30).setCritHit(5)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_SWORD, "Aspect of the Dragons", "a", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(225).setStrength(100)));
-        addSkyblockItems(new SkyblockWeapon(Material.DIAMOND_HOE, "Reaper Scythe", "", ItemRarity.LEGENDARY,
-                new ItemStats().setDamage(333).setMovementSpeed(10)));
-        addSkyblockItems(new SkyblockWeapon(Material.STONE_SWORD, "Adaptive Blade", "", ItemRarity.EPIC,
-                new ItemStats().setDamage(170)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.WOOD_SWORD).setName("Wooden Sword")
+                .setItemStats(new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Golden Sword").
+                setItemStats(new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.STONE_SWORD).setName("Stone Sword").
+                setItemStats(new ItemStats().setDamage(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Iron Sword").
+                setItemStats(new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("Diamond Sword").
+                setItemStats(new ItemStats().setDamage(35)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.WOOD_SWORD).setName("Aspect of the Jerry").
+                setItemStats(new ItemStats().setDamage(1)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Fancy Sword").
+                setItemStats(new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Rogue Sword").
+                setItemStats(new ItemStats().setDamage(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Spider Sword").
+                setItemStats(new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Undead Sword").
+                setItemStats(new ItemStats().setDamage(30)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("End Sword").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(35)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Cleaver").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(40).setStrength(10)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Flaming Sword").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(50).setStrength(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.PRISMARINE_SHARD).setName("Prismarine Blade").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(50).setStrength(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Hunter Knife").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(50).setMovementSpeed(40)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.WOOD_SWORD).setName("Tactician's Sword").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(50).setStrength(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.BLAZE_ROD).setName("Ember Rod").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(80).setStrength(35).setIntelligence(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_HOE).setName("Frozen Scythe").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(80)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Golem Sword").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(80).setStrength(125).setDefense(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_AXE).setName("Raiders Axe").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(80).setStrength(50)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("Revenant Falchion").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(90).setStrength(50).setIntelligence(100)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GHAST_TEAR).setName("Silver Fang").setRarity(ItemRarity.UNCOMMON).
+                setItemStats(new ItemStats().setDamage(100)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Shaman Sword").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(100).setStrength(20).setMovementSpeed(5)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("Aspect of the End").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(100).setStrength(100)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.WOOD_SWORD).setName("Scorpion Foil").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(100).setStrength(100)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Zombie Sword").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(100).setStrength(50).setIntelligence(50)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Ornate Zombie Sword").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(110).setStrength(60).setIntelligence(50)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("End Stone Sword").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(120).setStrength(80)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Recluse Fang").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(120).setStrength(30).setCritDamage(20)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("Reaper Falchion").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(120).setStrength(100).setIntelligence(200)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Pooch Sword").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(120).setStrength(20).setStrength(5)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.MUTTON).setName("Edible Mace").setRarity(ItemRarity.RARE).
+                setItemStats(new ItemStats().setDamage(125).setStrength(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.STICK).setName("Ink Wand").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(130).setStrength(90)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.EMERALD).setName("Emeral Blade").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(130)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Midas Sword").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(150)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Leaping Sword").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(150).setStrength(100).setCritDamage(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.IRON_SWORD).setName("Yeti Sword").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(150).setStrength(150).setIntelligence(50)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Silk-Edge Sword").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(175).setStrength(125).setCritDamage(25)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_SWORD).setName("Pigman Sword").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(200).setStrength(100).setCritDamage(30).setCritHit(5)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_SWORD).setName("Aspect of the Dragons").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(225).setStrength(100)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.DIAMOND_HOE).setName("Reaper Scythe").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(333).setMovementSpeed(10)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.STONE_SWORD).setName("Adaptive Blade").setRarity(ItemRarity.EPIC).
+                setItemStats(new ItemStats().setDamage(170)));
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_BLOCK).setName("Test Sword").setRarity(ItemRarity.LEGENDARY).
+                setItemStats(new ItemStats().setDamage(500).setStrength(500).setCritHit(100).setCritDamage(500).setAttackSpeed(500).setDefense(500).setMovementSpeed(500).setIntelligence(500)).
+                setLore("Test lore line 1//Test lore line 2//Test lore line 3"));
     }
 
     public static void enemyCache() {
