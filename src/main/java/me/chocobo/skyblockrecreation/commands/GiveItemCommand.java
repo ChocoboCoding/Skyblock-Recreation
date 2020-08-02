@@ -17,7 +17,7 @@ public class GiveItemCommand implements CommandExecutor {
                 System.out.println("GiveItemCommand.onCommand 1");
                 SkyblockPlayer skyblockPlayer = Startup.getSkyblockPlayers().get(player.getUniqueId());
                 System.out.println("GiveItemCommand.onCommand 2");
-                SkyblockItem item = Startup.getSkyblockItems().get(Integer.parseInt(args[0]));
+                SkyblockItem item = Startup.getSkyblockItem(Integer.parseInt(args[0]));
                 System.out.println("GiveItemCommand.onCommand 3");
                 skyblockPlayer.giveItem(item);
                 System.out.println("GiveItemCommand.onCommand 4");

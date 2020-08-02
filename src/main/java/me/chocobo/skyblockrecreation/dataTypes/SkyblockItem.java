@@ -15,23 +15,26 @@ import java.util.List;
 
 public class SkyblockItem {
 
-    protected String name;
-    protected Material material;
-    protected int amount;
-    protected ItemRarity rarity;
-    protected ItemType type;
-    protected Reforge reforge;
-    protected List<String> lore;
-    protected int hpb;
-    protected ItemStats itemStats;
-    protected Rune rune;
+    private String name = "";
+    private Material material = Material.BARRIER;
+    private int amount = 1;
+    private ItemRarity rarity = ItemRarity.COMMON;
+    private ItemType type = ItemType.NORMAL;
+    private Reforge reforge = Reforge.DEFAULT;
+    private List<String> lore = new ArrayList<>();
+    private int hpb;
+    private ItemStats itemStats = new ItemStats();
+    private Rune rune;
 
-    public SkyblockItem(ItemStats itemStats) {
-        System.out.println("SkyblockItem.SkyblockItem 1");
-        setAmount(1);
-        System.out.println("SkyblockItem.SkyblockItem 2");
-        setItemStats(itemStats);
-        System.out.println("SkyblockItem.SkyblockItem 3");
+    public SkyblockItem() {
+    }
+
+    public SkyblockItem(SkyblockItem item) {
+        this.setName(item.getName()).setMaterial(item.getMaterial()).setAmount(item.getAmount()).setRarity(item.getRarity()).
+                setType(item.getType()).setReforge(item.getReforge()).setLore(item.getLore()).setHpb(item.getHpb()).
+                setDamage(item.getDamage()).setStrength(item.getStrength()).setCritDamage(item.getCritDamage()).
+                setCritHit(item.getCritHit()).setAttackSpeed(item.getAttackSpeed()).setIntelligence(item.getIntelligence()).
+                setMovementSpeed(item.getMovementSpeed()).setDefense(item.getDefense()).setRune(item.getRune());
     }
 
     public String getName() {
@@ -66,8 +69,8 @@ public class SkyblockItem {
         System.out.println("SkyblockItem.getHpb 1");
         return hpb;
     }
-    public ItemStats getItemStats() {
-        System.out.println("SkyblockItem.getItemStats 1");
+    public ItemStats getStats() {
+        System.out.println("SkyblockItem.getStats 1");
         return itemStats;
     }
     public int getDamage() {
@@ -113,6 +116,7 @@ public class SkyblockItem {
         System.out.println("SkyblockItem.setName 2");
         return this;
     }
+
     public SkyblockItem setMaterial(Material material) {
         System.out.println("SkyblockItem.setMaterial 1");
         this.material = material;
@@ -146,6 +150,12 @@ public class SkyblockItem {
     public SkyblockItem setLore(String lore) {
         System.out.println("SkyblockItem.setLore 1");
         this.lore = LoreBuilder.cutLore(lore);
+        System.out.println("SkyblockItem.setLore 2");
+        return this;
+    }
+    public SkyblockItem setLore(List<String> lore) {
+        System.out.println("SkyblockItem.setLore 1");
+        this.lore = lore;
         System.out.println("SkyblockItem.setLore 2");
         return this;
     }
@@ -330,5 +340,88 @@ public class SkyblockItem {
         itemStack.setAmount(getAmount());
         System.out.println("SkyblockItem.createItem 8");
         return itemStack;
+    }
+
+    public SkyblockItem createItem(ItemStack itemStack) {
+        ItemMeta itemMeta = itemStack.getItemMeta();
+        SkyblockItem item = new SkyblockItem();
+        item.setName(item.getName());
+        item.setMaterial(itemStack.getData().getItemType());
+        item.setAmount(itemStack.getAmount());
+        String lastLine = itemMeta.getLore().get(itemMeta.getLore().size()-1);
+        ItemRarity[] itemRarities = ItemRarity.values();
+        for (ItemRarity itemRarity : itemRarities) {
+            if (lastLine.contains(itemRarity.getLoreMessage())) item.setRarity(itemRarity);
+        }
+
+        ItemType[] itemTypes = ItemType.values();
+        for (ItemType itemType : itemTypes) {
+            if (lastLine.contains(itemType.getLoreMessage())) item.setType(itemType);
+        }
+        List<String> lore = itemMeta.getLore();
+        int statsize = 0;
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).toLowerCase().contains("damage:")) {
+                String[] damageLore = lore.get(i).split(" ");
+                item.setDamage(Integer.parseInt(damageLore[1]));
+                statsize += 1;
+            } else if (lore.get(i).toLowerCase().contains("strength:")) {
+                String[] strengthLore = lore.get(i).split(" ");
+                item.setStrength(Integer.parseInt(strengthLore[1]));
+                statsize += 1;
+            } else if (lore.get(i).toLowerCase().contains("crit chance:")) {
+                String[] critHitLore = lore.get(i).split(" ");
+                item.setCritHit(Integer.parseInt(critHitLore[1]));
+                statsize += 1;
+            } else if (lore.get(i).toLowerCase().contains("crit damage:")) {
+                String[] critDamageLore = lore.get(i).split(" ");
+                item.setCritDamage(Integer.parseInt(critDamageLore[1]));
+                statsize += 1;
+            } else if (lore.get(i).toLowerCase().contains("bonus attack speed:")) {
+                String[] attackSpeedLore = lore.get(i).split(" ");
+                item.setAttackSpeed(Integer.parseInt(attackSpeedLore[1]));
+                statsize += 1;
+            } else if (lore.get(i).toLowerCase().contains("speed:")) {
+                String[] speedLore = lore.get(i).split(" ");
+                item.setMovementSpeed(Integer.parseInt(speedLore[1]));
+                statsize += 2;
+            } else if (lore.get(i).toLowerCase().contains("intelligence:")) {
+                String[] intelligenceLore = lore.get(i).split(" ");
+                item.setIntelligence(Integer.parseInt(intelligenceLore[1]));
+                statsize += 2;
+            }
+        }
+        statsize += 1;
+
+        if (statsize > 0) {
+            lore.subList(0, statsize).clear();
+            statsize = 0;
+        }
+
+        Rune[] runes = Rune.values();
+        for (Rune rune: runes) {
+            if (lore.get(0).equals(rune.getName())) {
+                item.setRune(rune);
+                lore.subList(0, 3).clear();
+                break;
+            }
+        }
+
+        String loreString = "";
+        for (int i = 0; i < lore.size(); i++) {
+            String line = lore.get(i);
+            if (line.equals("")) {
+                item.setLore(loreString);
+                lore.remove(0);
+                break;
+            } else if (loreString.equals("")) {
+                loreString += line;
+                lore.remove(0);
+            } else {
+                loreString += "//" + line;
+                lore.remove(0);
+            }
+        }
+        return item;
     }
 }

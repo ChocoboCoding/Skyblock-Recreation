@@ -6,7 +6,6 @@ public enum ItemType {
     ROD("FISHING ROD"),
     BOW("BOW"),
     ACCESSORY("ACCESSORY"),
-    ARMOR(""),
     HELMET("HELMET"),
     CHESTPLATE("CHESTPLATE"),
     LEGGINGS("LEGGINGS"),
@@ -19,7 +18,7 @@ public enum ItemType {
 
     private String loreMessage;
 
-    private ItemType(String loreMessage) {
+    ItemType(String loreMessage) {
         this.loreMessage = loreMessage;
     }
 

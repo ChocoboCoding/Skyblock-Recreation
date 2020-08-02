@@ -2,7 +2,6 @@ package me.chocobo.skyblockrecreation.events;
 
 import me.chocobo.skyblockrecreation.SkyblockRecreation;
 import me.chocobo.skyblockrecreation.dataTypes.SkyblockEnemy;
-import me.chocobo.skyblockrecreation.dataTypes.SkyblockEntity;
 import me.chocobo.skyblockrecreation.dataTypes.SkyblockPlayer;
 import me.chocobo.skyblockrecreation.utils.Startup;
 import org.bukkit.Bukkit;
@@ -171,19 +170,32 @@ public class DamageListener implements Listener {
                         }
                     }
                 case ENDERMITE:
+                    System.out.println("DamageListener.damageByEntity 1");
                     event.setDamage(0);
+                    System.out.println("DamageListener.damageByEntity 2");
                     damaged = Startup.getLivingEnemies().get(event.getEntity().getUniqueId());
+                    System.out.println("DamageListener.damageByEntity 3");
                     if (event.getDamager().getType().equals(EntityType.PLAYER)) {
+                        System.out.println("DamageListener.damageByEntity 1 4");
                         SkyblockPlayer damager = Startup.getSkyblockPlayers().get(event.getDamager().getUniqueId());
+                        System.out.println("DamageListener.damageByEntity 1 5");
                         damaged.damage(damager);
+                        System.out.println("DamageListener.damageByEntity 1 6");
                         Endermite damagedEntity = (Endermite) event.getEntity();
+                        System.out.println("DamageListener.damageByEntity 1 7");
                         if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
+                        System.out.println("DamageListener.damageByEntity 1 8");
                     } else {
                         if (Startup.getLivingEnemies().containsKey(event.getDamager().getUniqueId())) {
+                            System.out.println("DamageListener.damageByEntity 2 4");
                             SkyblockEnemy damager = Startup.getLivingEnemies().get(event.getDamager().getUniqueId());
+                            System.out.println("DamageListener.damageByEntity 2 5");
                             damaged.damage(damager);
+                            System.out.println("DamageListener.damageByEntity 2 6");
                             Endermite damagedEntity = (Endermite) event.getEntity();
+                            System.out.println("DamageListener.damageByEntity 2 7");
                             if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
+                            System.out.println("DamageListener.damageByEntity 2 8");
                         }
                     }
                 case GHAST:

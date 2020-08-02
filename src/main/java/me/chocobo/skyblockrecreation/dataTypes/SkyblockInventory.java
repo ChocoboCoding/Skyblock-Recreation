@@ -54,6 +54,6 @@ public class SkyblockInventory {
             }
             return getSkyblockItem(i);
         }
-        return new SkyblockItem(new ItemStats());
+        return new SkyblockItem();
     }
 }

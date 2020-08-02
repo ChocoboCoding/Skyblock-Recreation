@@ -55,14 +55,14 @@ public class LoreBuilder {
             System.out.println("LoreBuilder.addWeaponStats 2");
             System.out.println("item == null");
         }
-        if (item.getItemStats() == null) {
+        if (item.getStats() == null) {
             System.out.println("LoreBuilder.addWeaponStats 3");
             System.out.print("ItemStats == null");
         }
         System.out.println("LoreBuilder.addWeaponStats 4");
-        finalLore.add("§7Damage: §c+" + item.getItemStats().getDamage());
+        finalLore.add("§7Damage: §c+" + item.getStats().getDamage());
         System.out.println("LoreBuilder.addWeaponStats 5");
-        if (item.getItemStats().getStrength() != 0) finalLore.add("§7Strength: §c+" + item.getItemStats().getStrength());
+        if (item.getStats().getStrength() != 0) finalLore.add("§7Strength: §c+" + item.getStats().getStrength());
         System.out.println("LoreBuilder.addWeaponStats 6");
         if (item.getHpb() != 0) {
             System.out.println("LoreBuilder.addWeaponStats 7");
@@ -71,34 +71,34 @@ public class LoreBuilder {
             finalLore.set(1, finalLore.get(1) + " §e(+" + item.getHpb() * 2 + ")");
             System.out.println("LoreBuilder.addWeaponStats 9");
         }
-        if (item.getItemStats().getStrength() != 0) if (reforgeStats.getStrength() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getStrength() + ")");
+        if (item.getStats().getStrength() != 0) if (reforgeStats.getStrength() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getStrength() + ")");
         System.out.println("LoreBuilder.addWeaponStats 10");
-        if (item.getItemStats().getCritHit() != 0) {
+        if (item.getStats().getCritHit() != 0) {
             System.out.println("LoreBuilder.addWeaponStats 11");
-            finalLore.add("§7Crit Chance: §c+" + item.getItemStats().getCritHit() + "%");
+            finalLore.add("§7Crit Chance: §c+" + item.getStats().getCritHit() + "%");
             System.out.println("LoreBuilder.addWeaponStats 12");
             if (reforgeStats.getStrength() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getCritHit() + "%)");
             System.out.println("LoreBuilder.addWeaponStats 13");
         }
-        if (item.getItemStats().getCritDamage() != 0) {
+        if (item.getStats().getCritDamage() != 0) {
             System.out.println("LoreBuilder.addWeaponStats 14");
-            finalLore.add("§7Crit Damage: §c+" + item.getItemStats().getCritDamage() + "%");
+            finalLore.add("§7Crit Damage: §c+" + item.getStats().getCritDamage() + "%");
             System.out.println("LoreBuilder.addWeaponStats 15");
             if (reforgeStats.getCritDamage() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getCritDamage() + "%)");
             System.out.println("LoreBuilder.addWeaponStats 16");
         }
-        if (item.getItemStats().getAttackSpeed() != 0) {
+        if (item.getStats().getAttackSpeed() != 0) {
             System.out.println("LoreBuilder.addWeaponStats 17");
-            finalLore.add("§7Bonus Attack Speed: §c" + item.getItemStats().getAttackSpeed() + "%");
+            finalLore.add("§7Bonus Attack Speed: §c" + item.getStats().getAttackSpeed() + "%");
             System.out.println("LoreBuilder.addWeaponStats 18");
             if (reforgeStats.getAttackSpeed() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getAttackSpeed() + "%)");
         }
         System.out.println("LoreBuilder.addWeaponStats 19");
-        if (item.getItemStats().getIntelligence() != 0) {
+        if (item.getStats().getIntelligence() != 0) {
             System.out.println("LoreBuilder.addWeaponStats 20");
             finalLore.add("");
             System.out.println("LoreBuilder.addWeaponStats 21");
-            finalLore.add("§7Intelligence: §a+" + item.getItemStats().getIntelligence());
+            finalLore.add("§7Intelligence: §a+" + item.getStats().getIntelligence());
             System.out.println("LoreBuilder.addWeaponStats 22");
             if (reforgeStats.getIntelligence() != 0) finalLore.set(finalLore.size()-1, finalLore.get(finalLore.size()-1) + " §9(" + item.getReforge().getName() + " " + reforgeStats.getIntelligence() + ")");
         }

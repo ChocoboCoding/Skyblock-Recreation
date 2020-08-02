@@ -3,7 +3,7 @@ package me.chocobo.skyblockrecreation.enums;
 public enum Rune {
 
     BLOOD("§c◆ Blood Rune", 1, ItemType.MELEE, ItemRarity.COMMON, ""),
-    SNOW("◆ Snow Rune", 2, ItemType.MELEE, ItemRarity.COMMON, ""),
+    SNOW("§f◆ Snow Rune", 2, ItemType.MELEE, ItemRarity.COMMON, ""),
     LAVA("§4◆ Lava Rune", 3, ItemType.BOW, ItemRarity.COMMON, ""),
     GEM("§2◆ Gem Rune", 4, ItemType.BOW, ItemRarity.COMMON, ""),
     ZAP("", 5, ItemType.BOOTS, ItemRarity.UNCOMMON, ""),

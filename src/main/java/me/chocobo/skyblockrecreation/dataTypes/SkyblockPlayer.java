@@ -9,13 +9,12 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SkyblockPlayer extends SkyblockEntity {
+public class SkyblockPlayer {
     private UUID uuid;
     private SkyblockInventory inventory;
     private PlayerStats playerStats;
 
     public SkyblockPlayer(UUID uuid, PlayerStats playerStats, SkyblockInventory inventory) {
-        super(playerStats);
         System.out.println("SkyblockPlayer.SkyblockPlayer 1 1");
         setPlayerStats(playerStats);
         System.out.println("SkyblockPlayer.SkyblockPlayer 1 2");
@@ -24,7 +23,6 @@ public class SkyblockPlayer extends SkyblockEntity {
     }
 
     public SkyblockPlayer(UUID uuid) {
-        super(new PlayerStats(1000));
         System.out.println("SkyblockPlayer.SkyblockPlayer 2 1");
         setUuid(uuid);
         System.out.println("SkyblockPlayer.SkyblockPlayer 2 2");
@@ -37,6 +35,14 @@ public class SkyblockPlayer extends SkyblockEntity {
         System.out.println("SkyblockPlayer.SkyblockPlayer 2 5");
     }
 
+    public int getMaxHealth() {
+        System.out.println("SkyblockPlayer.getMaxHealth 1");
+        return playerStats.getMaxHealth();
+    }
+    public int getCurrentHealth() {
+        System.out.println("SkyblockPlayer.getCurrentHealth 1");
+        return playerStats.getCurrentHealth();
+    }
     public UUID getUuid() {
         System.out.println("SkyblockPlayer.getUUID 1");
         return uuid;
@@ -94,6 +100,22 @@ public class SkyblockPlayer extends SkyblockEntity {
         return playerStats.getPetLuck();
     }
 
+    public SkyblockPlayer setMaxHealth(int health) {
+        System.out.println("SkyblockPlayer.setMaxHealt 1");
+        playerStats.setMaxHealth(health);
+        if (playerStats.getMaxHealth() > playerStats.getCurrentHealth()) {
+            System.out.println("SkyblockPlayer.setMaxHealth 2");
+            playerStats.setCurrentHealth(health);
+        }
+        System.out.println("SkyblockPlayer.setMaxHealth 3");
+        return this;
+    }
+    public SkyblockPlayer setCurrentHealth(int health) {
+        System.out.println("SkyblockPlayer.setCurrentHealth 1");
+        playerStats.setCurrentHealth(health);
+        System.out.println("SkyblockPlayer.setCurrentHealth 2");
+        return this;
+    }
     public SkyblockPlayer setUuid(UUID uuid) {
         System.out.println("SkyblockPlayer.setUUID 1");
         this.uuid = uuid;
@@ -210,7 +232,7 @@ public class SkyblockPlayer extends SkyblockEntity {
     }
     public SkyblockPlayer addMana(int mana) {
         System.out.println("SkyblockPlayer.addMana 1");
-        playerStats.setMana(playerStats.getMana() + mana);
+        setMana(getMana() + mana);
         System.out.println("SkyblockPlayer.addMana 2");
         return this;
     }
@@ -326,18 +348,24 @@ public class SkyblockPlayer extends SkyblockEntity {
     }
 
     public SkyblockPlayer giveItem(SkyblockItem item) {
+        Player player = Bukkit.getPlayer(getUuid());
         System.out.println("SkyblockPlayer.giveItem 1");
-        inventory.addSkyblockItem(item);
-        System.out.println("SkyblockPlayer.giveItem 2");
         ItemStack itemStack = item.createItem();
-        System.out.println("SkyblockPlayer.giveItem 3");
-        Bukkit.getPlayer(getUuid()).getInventory().addItem(itemStack);
+        for (int i = 0; i < 37; i++) {
+            if (player.getInventory().getItem(i) == null) {
+                System.out.println("SkyblockPlayer.giveItem 2");
+                inventory.setSkyblockItem(item, i);
+                System.out.println("SkyblockPlayer.giveItem 3");
+                Bukkit.getPlayer(getUuid()).getInventory().setItem(i, itemStack);
+                break;
+            }
+        }
         System.out.println("SkyblockPlayer.giveItem 4");
         return this;
     }
 
     public SkyblockPlayer damage(SkyblockPlayer damager) {
-        int damage = (5 + damager.getItemInHand().getItemStats().getDamage() + (damager.getStats().getStrength()/5) * (1 + damager.getStats().getStrength() / 100));
+        int damage = (5 + damager.getItemInHand().getStats().getDamage() + (damager.getStats().getStrength()/5) * (1 + damager.getStats().getStrength() / 100));
         damage = damage - (int) Math.round(damage * getStats().getDamageReduction());
         setCurrentHealth(getStats().getCurrentHealth() - damage);
         return this;
@@ -357,13 +385,11 @@ public class SkyblockPlayer extends SkyblockEntity {
 
     public SkyblockItem getItemInHand() {
         Player player = Bukkit.getPlayer(getUuid());
-        SkyblockItem item = new SkyblockItem(new ItemStats());
-        for (int i = 0; i < 9; i++) {
-            if (player.getInventory().getItem(i) == player.getItemInHand()) {
-                return item = getInventory().getItem(i);
-            }
-
-        }
+        SkyblockItem item = inventory.getItem(player.getInventory().getHeldItemSlot());
         return item;
+    }
+
+    public SkyblockItem getItemInHand(int i) {
+        return inventory.getItem(i);
     }
 }

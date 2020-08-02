@@ -1,14 +1,21 @@
 package me.chocobo.skyblockrecreation.dataTypes;
 
-public class PlayerStats extends EntityStats {
+public class PlayerStats {
 
     protected int strength, critDamage, critHit, attackSpeed, intelligence, mana, movementSpeed, defense, damageReduction,
-            currentEffectiveHealth, maxEffectiveHealth, seaCreatureChance, magicFind, petLuck;
+            maxHealth, currentHealth, maxEffectiveHealth, currentEffectiveHealth, seaCreatureChance, magicFind, petLuck;
 
     public PlayerStats(int maxHealth) {
-        super(maxHealth);
+        setMaxHealth(maxHealth);
+        setCurrentHealth(maxHealth);
     }
 
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
     public int getStrength() {
         return strength;
     }
@@ -52,7 +59,16 @@ public class PlayerStats extends EntityStats {
         return petLuck;
     }
 
-
+    public PlayerStats setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+        maxEffectiveHealth = Math.round(getMaxHealth() * (1 + getDefense() / 100));
+        return this;
+    }
+    public PlayerStats setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
+        currentEffectiveHealth = Math.round(getCurrentHealth() * (1 + getDefense() / 100));
+        return this;
+    }
     public PlayerStats setStrength(int strength) {
         this.strength = strength;
         return this;
@@ -83,23 +99,11 @@ public class PlayerStats extends EntityStats {
     }
     public PlayerStats setDefense(int defense) {
         this.defense = defense;
-        maxEffectiveHealth = getMaxHealth() * (1 + getDefense()/100);
+        maxEffectiveHealth = Math.round(getMaxHealth() * (1 + getDefense()/100));
         return this;
     }
     public PlayerStats setDamageReduction(int damageReduction) {
         this.damageReduction = damageReduction;
-        return this;
-    }
-    @Override
-    public PlayerStats setMaxHealth(int maxHealth) {
-        this.maxHealth = maxHealth;
-        maxEffectiveHealth = getMaxHealth() * (1 + getDefense() / 100);
-        return this;
-    }
-    @Override
-    public PlayerStats setCurrentHealth(int currentHealth) {
-        this.currentHealth = currentHealth;
-        currentEffectiveHealth = getMaxHealth() * (1+getDefense() / 100);
         return this;
     }
     public PlayerStats setSeaCreatureChance(int seaCreatureChance) {

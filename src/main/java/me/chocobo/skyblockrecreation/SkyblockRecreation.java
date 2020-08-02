@@ -17,6 +17,9 @@ public final class SkyblockRecreation extends JavaPlugin {
 
     private static SkyblockRecreation plugin;
 
+    public void main(String[] args) {
+        onEnable();
+    }
 
     @Override
     public void onEnable() {

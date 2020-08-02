@@ -6,12 +6,11 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.entity.Entity;
 
-public class SkyblockEnemy extends SkyblockEntity{
+public class SkyblockEnemy {
     protected EnemyStats enemyStats;
     protected Entity enemy;
 
     public SkyblockEnemy(EnemyStats enemyStats) {
-        super(enemyStats);
         System.out.println("SkyblockEnemy.SkyblockEnemy 1");
         setEnemyStats(enemyStats);
         System.out.println("SkyblockEnemy.SkyblockEnemy 2");
@@ -32,15 +31,13 @@ public class SkyblockEnemy extends SkyblockEntity{
         System.out.println("SkyblockEnemy.getDamage 1");
         return enemyStats.getDamage();
     }
-    @Override
     public int getMaxHealth() {
         System.out.println("SkyblockEnemy.getMaxHealth 1");
-        return super.getMaxHealth();
+        return enemyStats.getMaxHealth();
     }
-    @Override
     public int getCurrentHealth() {
         System.out.println("SkyblockEnemy.getCurrentHealth 1");
-        return super.getCurrentHealth();
+        return enemyStats.getCurrentHealth();
     }
     public Entity getEnemy() {
         System.out.println("SkyblockEnemy.getEnemy 1");
@@ -71,6 +68,23 @@ public class SkyblockEnemy extends SkyblockEntity{
         System.out.println("SkyblockEnemy.setLevel 2");
         return this;
     }
+    public SkyblockEnemy setMaxHealth(int health) {
+        System.out.println("SkyblockEnemy.setMaxHealth 1");
+        enemyStats.setMaxHealth(health);
+        if (getMaxHealth() < getCurrentHealth()) {
+            System.out.println("SkyblockEnemy.setMaxHealth 2");
+            setCurrentHealth(health);
+        }
+        System.out.println("SkyblockEnemy.setMaxHealth 3");
+        return this;
+    }
+
+    public SkyblockEnemy setCurrentHealth(int health) {
+        System.out.println("SkyblockEnemy.setCurrentHealth 1");
+        enemyStats.setCurrentHealth(health);
+        System.out.println("SkyblockEnemy.setCurrentHealth 2");
+        return this;
+    }
 
     public SkyblockEnemy updateName() {
         enemy.setCustomName("§8[§7Lv" + getLevel() + "§8] §c " + getType().getName() + " §a" + this.getCurrentHealth() + "§r/§a" + this.getMaxHealth() + "§l§c♥");
@@ -79,13 +93,7 @@ public class SkyblockEnemy extends SkyblockEntity{
 
     public SkyblockEnemy damage(SkyblockPlayer damager) {
         System.out.println("SkyblockEnemy.damage 1 1");
-        int damage = (int) Math.round(5 + (damager.getStats().getStrength()/5) * ((1 + damager.getStats().getStrength()) / 100));
-        try {
-            System.out.println(damager.getItemInHand().getItemStats().getDamage());
-            System.out.println(damager.getStats().getStrength());
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+        int damage = (int) Math.round((5 + damager.getItemInHand().getDamage() + (damager.getStats().getStrength()/5)) * ((1 + damager.getStats().getStrength()) / 100));
         System.out.println("SkyblockEnemy.damage 1 2");
         setCurrentHealth(getEnemyStats().getCurrentHealth() - damage);
         System.out.println("SkyblockEnemy.damage 1 3");

@@ -2,13 +2,14 @@ package me.chocobo.skyblockrecreation.dataTypes;
 
 import me.chocobo.skyblockrecreation.enums.EnemyType;
 
-public class EnemyStats extends EntityStats {
+public class EnemyStats {
 
     private int level, damage, maxHealth, currentHealth;
     private EnemyType enemyType;
 
     public EnemyStats(int level, int maxHealth, int damage, EnemyType enemyType) {
-        super(maxHealth);
+        setMaxHealth(maxHealth);
+        setCurrentHealth(maxHealth);
         System.out.println("EnemyStats.EnemyStats 1");
         setLevel(level);
         System.out.println("EnemyStats.EnemyStats 2");
@@ -26,12 +27,10 @@ public class EnemyStats extends EntityStats {
         System.out.println("EnemyStats.getDamage 1");
         return damage;
     }
-    @Override
     public int getMaxHealth() {
         System.out.println("EnemyStats.getMaxHealth 1");
         return maxHealth;
     }
-    @Override
     public int getCurrentHealth() {
         System.out.println("EnemyStats.getCurrentHealth 1");
         return currentHealth;
@@ -53,14 +52,12 @@ public class EnemyStats extends EntityStats {
         System.out.println("EnemyStats.setDamage 2");
         return this;
     }
-    @Override
     public EnemyStats setMaxHealth(int maxHealth) {
         System.out.println("EnemyStats.setMaxHealth 1");
         this.maxHealth = maxHealth;
         System.out.println("EnemyStats.setMaxHealth 2");
         return this;
     }
-    @Override
     public EnemyStats setCurrentHealth(int currentHealth) {
         System.out.println("EnemyStats.setCurrentHealth 1");
         this.currentHealth = currentHealth;

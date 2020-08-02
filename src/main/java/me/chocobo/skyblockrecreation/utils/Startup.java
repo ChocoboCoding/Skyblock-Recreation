@@ -3,6 +3,7 @@ package me.chocobo.skyblockrecreation.utils;
 import me.chocobo.skyblockrecreation.dataTypes.*;
 import me.chocobo.skyblockrecreation.enums.EnemyType;
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
+import me.chocobo.skyblockrecreation.enums.Rune;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
@@ -34,14 +35,7 @@ public class Startup {
         return uiItems;
     }
     public static SkyblockItem getSkyblockItem(int index) {
-        SkyblockItem item = skyblockItems.get(index);
-        SkyblockItem copy = new SkyblockItem();
-        copy.setName(item.getName()).setMaterial(item.getMaterial()).setAmount(item.getAmount()).setRarity(item.getRarity()).
-                setType(item.getType()).setReforge(item.getReforge()).setLore(item.getLore()).setHpb(item.getHpb()).
-                setDamage(item.getDamage()).setStrength(item.getStrength()).setCritDamage(item.getCritDamage()).
-                setCritHit(item.getCritHit()).setAttackSpeed(item.getAttackSpeed()).setIntelligence(item.getIntelligence()).
-                setMovementSpeed(item.getMovementSpeed()).setDefense(item.getDefense()).setRune(item.getRune());
-        return copy;
+        return new SkyblockItem(skyblockItems.get(index));
     }
     public static Map<UUID, SkyblockEnemy> getLivingEnemies() {
         return livingEnemies;
@@ -198,9 +192,9 @@ public class Startup {
                 setItemStats(new ItemStats().setDamage(333).setMovementSpeed(10)));
         addSkyblockItems(new SkyblockItem().setMaterial(Material.STONE_SWORD).setName("Adaptive Blade").setRarity(ItemRarity.EPIC).
                 setItemStats(new ItemStats().setDamage(170)));
-        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_BLOCK).setName("Test Sword").setRarity(ItemRarity.LEGENDARY).
+        addSkyblockItems(new SkyblockItem().setMaterial(Material.GOLD_BLOCK).setName("Test Blade").setRarity(ItemRarity.LEGENDARY).
                 setItemStats(new ItemStats().setDamage(500).setStrength(500).setCritHit(100).setCritDamage(500).setAttackSpeed(500).setDefense(500).setMovementSpeed(500).setIntelligence(500)).
-                setLore("Test lore line 1//Test lore line 2//Test lore line 3"));
+                setLore("Test lore line 1//Test lore line 2//Test lore line 3").setRune(Rune.BLOOD));
     }
 
     public static void enemyCache() {
