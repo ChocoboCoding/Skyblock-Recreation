@@ -5,10 +5,7 @@ import me.chocobo.skyblockrecreation.enums.EnemyType;
 import me.chocobo.skyblockrecreation.enums.ItemRarity;
 import me.chocobo.skyblockrecreation.enums.Rune;
 import org.bukkit.Material;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 

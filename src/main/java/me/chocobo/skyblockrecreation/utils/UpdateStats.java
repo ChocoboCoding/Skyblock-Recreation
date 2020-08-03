@@ -20,7 +20,7 @@ public class UpdateStats {
                 if (skyblockPlayer.getMana() + (int) Math.round(regeneration) > skyblockPlayer.getIntelligence()) skyblockPlayer.addMana((int) Math.round(regeneration) - (skyblockPlayer.getMana() + (int) Math.round(regeneration) - skyblockPlayer.getIntelligence()));
                 else skyblockPlayer.addMana((int) Math.round(regeneration));
             }
-            player.sendActionBar("§c" + skyblockPlayer.getCurrentHealth() + "/" + skyblockPlayer.getMaxHealth() + "♥    §a" + skyblockPlayer.getDefense() + " Defense    §b" + skyblockPlayer.getMana() + "/" +skyblockPlayer.getIntelligence() + " Mana");
+            //player.sendActionBar("§c" + skyblockPlayer.getCurrentHealth() + "/" + skyblockPlayer.getMaxHealth() + "♥    §a" + skyblockPlayer.getDefense() + " Defense    §b" + skyblockPlayer.getMana() + "/" +skyblockPlayer.getIntelligence() + " Mana");
 
         }
     }

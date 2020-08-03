@@ -15,21 +15,37 @@ import java.util.List;
 
 public class SkyblockItem {
 
-    private String name = "";
-    private Material material = Material.BARRIER;
-    private int amount = 1;
-    private ItemRarity rarity = ItemRarity.COMMON;
-    private ItemType type = ItemType.NORMAL;
-    private Reforge reforge = Reforge.DEFAULT;
-    private List<String> lore = new ArrayList<>();
+    private String name;
+    private Material material;
+    private int amount;
+    private ItemRarity rarity;
+    private ItemType type;
+    private Reforge reforge;
+    private List<String> lore;
     private int hpb;
-    private ItemStats itemStats = new ItemStats();
+    private ItemStats itemStats;
     private Rune rune;
 
     public SkyblockItem() {
+        lore = new ArrayList<>();
+        itemStats = new ItemStats();
+        name = "";
+        material = Material.BARRIER;
+        rarity = ItemRarity.COMMON;
+        type = ItemType.NORMAL;
+        reforge = Reforge.DEFAULT;
+        amount = 1;
     }
 
     public SkyblockItem(SkyblockItem item) {
+        lore = new ArrayList<>();
+        itemStats = new ItemStats();
+        name = "";
+        material = Material.BARRIER;
+        rarity = ItemRarity.COMMON;
+        type = ItemType.NORMAL;
+        reforge = Reforge.DEFAULT;
+        amount = 1;
         this.setName(item.getName()).setMaterial(item.getMaterial()).setAmount(item.getAmount()).setRarity(item.getRarity()).
                 setType(item.getType()).setReforge(item.getReforge()).setLore(item.getLore()).setHpb(item.getHpb()).
                 setDamage(item.getDamage()).setStrength(item.getStrength()).setCritDamage(item.getCritDamage()).

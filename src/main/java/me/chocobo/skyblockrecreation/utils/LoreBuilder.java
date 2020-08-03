@@ -31,11 +31,11 @@ public class LoreBuilder {
             addReforgeDescription(item);
         }
         System.out.println("LoreBuilder.LoreBuilder 6");
-        if (!item.getLore().get(0).equals("")) {
+        if (item.getLore().size() != 0) {
             finalLore.addAll(item.getLore());
             finalLore.add("");
         }
-        System.out.println("LoreBuilder.LorBuilder 7");
+        System.out.println("LoreBuilder.LoreBuilder 7");
 
         if (item.getType() != ItemType.ACCESSORY || item.getType() != ItemType.NORMAL) {
             System.out.println("LoreBuilder.LoreBuilder 8");

@@ -137,6 +137,7 @@ public class DamageListener implements Listener {
                             if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
                         }
                     }
+                    /*
                 case ELDER_GUARDIAN:
                     event.setDamage(0);
                     damaged = Startup.getLivingEnemies().get(event.getEntity().getUniqueId());
@@ -153,6 +154,7 @@ public class DamageListener implements Listener {
                             if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
                         }
                     }
+                     */
                 case ENDERMAN:
                     event.setDamage(0);
                     damaged = Startup.getLivingEnemies().get(event.getEntity().getUniqueId());
@@ -390,6 +392,7 @@ public class DamageListener implements Listener {
                             if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
                         }
                     }
+                /*
                 case WITHER_SKELETON:
                     event.setDamage(0);
                     damaged = Startup.getLivingEnemies().get(event.getEntity().getUniqueId());
@@ -406,6 +409,7 @@ public class DamageListener implements Listener {
                             if (damaged.getCurrentHealth() <= 0) damagedEntity.setHealth(0);
                         }
                     }
+                 */
                 case WOLF:
                     event.setDamage(0);
                     damaged = Startup.getLivingEnemies().get(event.getEntity().getUniqueId());
